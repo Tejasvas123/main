@@ -4,8 +4,8 @@ import java.util.ArrayList;
 public class Duke {
     private static final int LINE_LENGTH = 50;
     private static final int NUM_SPACE = 4;
-    private static ArrayList<String> storeList =
-             new ArrayList<String>();
+    private static ArrayList<Task> storeList =
+             new ArrayList<Task>();
 
     private static void printDash() {
         for (int i = 0; i < LINE_LENGTH; i++) {
@@ -22,10 +22,25 @@ public class Duke {
 
     private static void printList() {
         for (int i = 0; i < storeList.size(); i++) {
-            System.out.println(" " + (i + 1) + ". "
-                    + storeList.get(i));
+            System.out.print(" " + (i + 1) + ". [ "
+                    + storeList.get(i).getStatusIcon()
+                    + "]");
+            System.out.println(" "
+                   + storeList.get(i).description);
             printSpaces();
         }
+        printDash();
+    }
+
+    private static void printTaskDone(String temp) {
+        System.out.println("Nice! I have marked"
+                + "this task as done:");
+        int i = Integer.parseInt(temp) - 1;
+        storeList.get(i).markAsDone();
+        printSpaces();
+        System.out.println(" [" + '\u2713' + "] "
+                + storeList.get(i).description);
+        printSpaces();
         printDash();
     }
 
@@ -47,8 +62,12 @@ public class Duke {
             } else if (str.equals("list")) {
                 printList();
                 continue;
+            } else if (str.substring(0,4).equals("done")) {
+                String convertInt = str.substring(5);
+                printTaskDone(convertInt);
+                continue;
             }
-            storeList.add(str);
+            storeList.add(new Task(str));
             System.out.println(" added: " + str);
             printSpaces();
             printDash();
