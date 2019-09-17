@@ -15,6 +15,7 @@ public class AddDoAfterCommand extends Command {
         this.splitInput = splitInput;
     }
 
+    @Override
     public void execute(TaskList tasks, Ui ui, FileHandling storage)throws DukeException {
         int i;
         int k = 0;
@@ -38,7 +39,7 @@ public class AddDoAfterCommand extends Command {
             throw new DukeException(" Please make sure you have used \"/after\" to separate"
                     + " task and time");
         } else if (split2.trim().length() == 0) {
-            throw new DukeException( " The description of a Do-after task cannot be empty");
+            throw new DukeException(" The description of a Do-after task cannot be empty");
         }
         tasks.addTask(new DoAfter(split1.trim(), split2.trim()));
         String taskA = tasks.getTask(tasks.numTasks() - 1).toString();
