@@ -10,6 +10,14 @@ public class Locker {
     private String zone;
     private Tag tag;
 
+    /**
+     * Locker stores all the information regarding the status of the locker.
+     * @param serialNumber stores the serial numbers associated with each locker
+     * @param address stores the location of the locker
+     * @param zone stores the zone to which the locker belongs
+     * @param tag instance of the class Tag that stores the status of the locker
+     */
+
     @JsonCreator
     public Locker(@JsonProperty("serial") int serialNumber,@JsonProperty("address") String address,
                   @JsonProperty("zone") String zone,@JsonProperty("tag") Tag tag) {
@@ -20,19 +28,19 @@ public class Locker {
     }
 
     public void setTagAsInUse() {
-        tag.tagName = tag.IN_USE;
+        tag.tagName = Tag.IN_USE;
     }
 
     public void setStatusAsBroken() {
-        tag.tagName = tag.BROKEN;
+        tag.tagName = Tag.BROKEN;
     }
 
     public void setStatusAsUnAuthorized() {
-        tag.tagName = tag.UNAUTHORIZED;
+        tag.tagName = Tag.UNAUTHORIZED;
     }
 
     public void setStatusAsNotInUse() {
-        tag.tagName = tag.NOT_IN_USE;
+        tag.tagName = Tag.NOT_IN_USE;
     }
 
     @JsonGetter("tag")
@@ -56,8 +64,8 @@ public class Locker {
     }
 
     public String toString() {
-        return "Locker #" + getSerialNumber() +": " + "Area: " + address + " Zone: " + zone
-                + " [" + getTag().tagName +"]";
+        return "Locker #" + getSerialNumber() + ": " + "Area: " + address + " Zone: " + zone
+                + " [" + getTag().tagName + "]";
     }
 
 }

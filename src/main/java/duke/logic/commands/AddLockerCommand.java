@@ -12,6 +12,7 @@ import java.util.List;
 public class AddLockerCommand extends Command {
 
     private List<String> splitInput;
+
     public AddLockerCommand(List<String> splitInput) {
         this.splitInput = splitInput;
     }
@@ -19,12 +20,12 @@ public class AddLockerCommand extends Command {
     @Override
     public void execute(LockerList lockers, Ui ui, FileHandling storage) throws DukeException {
 
-        if(splitInput.size() == 1) {
+        if (splitInput.size() == 1) {
             throw new DukeException(" Please provide details of the locker to be added");
         }
-        int serialNumber = Integer.parseInt(splitInput.get(1));
-        String address = splitInput.get(2);
-        String zone = splitInput.get(3);
+        int serialNumber = Integer.parseInt(splitInput.get(1).substring(2));
+        String address = splitInput.get(2).substring(2);
+        String zone = splitInput.get(3).substring(2);
         lockers.addLocker(new Locker(serialNumber,address,zone,new Tag("not-in-use")));
         String lockerA = lockers.getLocker(lockers.numLockers() - 1).toString();
         ui.printAddLocker(lockers.getAllLockers(),lockerA);
