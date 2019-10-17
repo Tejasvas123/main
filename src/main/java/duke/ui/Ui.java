@@ -74,11 +74,21 @@ public class Ui {
      * @param listOfLockers used for printing the number of lockers in the list
      * @param lockerA stores the locker that is added to the list
      */
-
     public void printAddLocker(List<Locker> listOfLockers, String lockerA) {
         printSpaces(" Got it. I have added this locker: ");
         printSpaces(" " + lockerA);
         printSpaces(" Now, Spongebob is managing " + listOfLockers.size() + " lockers");
+        printDash();
+    }
+
+    /**
+     * This function tells the user that SpongeBob has added a batch of lockers to the list.
+     * @param num  stores the number of lockers that are added
+     * @param serialNumber stores the serial number of the first locker added
+     */
+    public void printBatch(int num,int serialNumber) {
+        printSpaces(" Got it. I have added " + num + " lockers with serial numbers #"
+                + serialNumber + "- #" + (serialNumber + num - 1));
         printDash();
     }
 
@@ -108,7 +118,7 @@ public class Ui {
 
     private void showNumTasks(List<Locker> listOfTasks) {
         printSpaces(" Now you have " + listOfTasks.size()
-                + ((listOfTasks.size() == 1) ? " task in the list." : " tasks in "
+                + ((listOfTasks.size() == 1) ? " locker in the list." : " lockers in "
                 + "the list"));
         printDash();
     }
@@ -138,14 +148,24 @@ public class Ui {
     }
 
     /**
-     * This function tells the user that Duke has deleted the task from the list.
-     * @param taskList used for showing the number of tasks left in the list.
-     * @param taskA stores the task that is deleted.
+     * This function tells the user that SpongeBob has deleted the lockers from the list.
+     * @param lockerList used for showing the number of lockers left in the list.
+     * @param lockerA stores the locker that is deleted.
      */
-    public void deleteMessage(List<Locker> taskList, String taskA) {
-        printSpaces(" Noted. I have removed this task:");
-        printSpaces("  " + taskA);
-        showNumTasks(taskList);
+    public void deleteMessage(List<Locker> lockerList, String lockerA) {
+        printSpaces(" Noted. I have removed this locker:");
+        printSpaces("  " + lockerA);
+        showNumTasks(lockerList);
+    }
+
+    /**
+     * This function tells the user that SpongeBob has edited the locker from the list.
+     * @param lockerA stores the locker that is edited
+     */
+    public void editMessage(String lockerA) {
+        printSpaces("Noted. I have edited the locker to:");
+        printSpaces(" " + lockerA);
+        printDash();
     }
 
     /**

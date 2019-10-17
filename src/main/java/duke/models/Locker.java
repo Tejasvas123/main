@@ -27,8 +27,8 @@ public class Locker {
         this.tag = tag;
     }
 
-    public void setTagAsInUse() {
-        tag.tagName = Tag.IN_USE;
+    public void setTagAs(String tagName) {
+        tag.tagName = tagName;
     }
 
     public void setStatusAsBroken() {
@@ -41,6 +41,11 @@ public class Locker {
 
     public void setStatusAsNotInUse() {
         tag.tagName = Tag.NOT_IN_USE;
+    }
+
+    public String toString() {
+        return "Locker #" + getSerialNumber() + ": " + "Area: " + address + " Zone: " + zone
+                + " [" + getTag().tagName + "]";
     }
 
     @JsonGetter("tag")
@@ -63,9 +68,5 @@ public class Locker {
         return zone;
     }
 
-    public String toString() {
-        return "Locker #" + getSerialNumber() + ": " + "Area: " + address + " Zone: " + zone
-                + " [" + getTag().tagName + "]";
-    }
 
 }

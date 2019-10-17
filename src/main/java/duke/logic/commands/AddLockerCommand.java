@@ -18,7 +18,7 @@ public class AddLockerCommand extends Command {
     }
 
     @Override
-    public void execute(LockerList lockers, Ui ui, FileHandling storage) throws DukeException {
+    public void execute(LockerList lockerList, Ui ui, FileHandling storage) throws DukeException {
 
         if (splitInput.size() == 1) {
             throw new DukeException(" Please provide details of the locker to be added");
@@ -26,9 +26,9 @@ public class AddLockerCommand extends Command {
         int serialNumber = Integer.parseInt(splitInput.get(1).substring(2));
         String address = splitInput.get(2).substring(2);
         String zone = splitInput.get(3).substring(2);
-        lockers.addLocker(new Locker(serialNumber,address,zone,new Tag("not-in-use")));
-        String lockerA = lockers.getLocker(lockers.numLockers() - 1).toString();
-        ui.printAddLocker(lockers.getAllLockers(),lockerA);
-        storage.saveData(lockers);
+        lockerList.addLocker(new Locker(serialNumber,address,zone,new Tag("not-in-use")));
+        String lockerA = lockerList.getLocker(lockerList.numLockers() - 1).toString();
+        ui.printAddLocker(lockerList.getAllLockers(),lockerA);
+        storage.saveData(lockerList);
     }
 }

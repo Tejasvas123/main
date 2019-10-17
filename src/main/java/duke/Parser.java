@@ -1,9 +1,12 @@
 package duke;
 
 import duke.exceptions.DukeException;
+import duke.logic.commands.AddBatchCommand;
 import duke.logic.commands.AddLockerCommand;
 import duke.logic.commands.ByeCommand;
 import duke.logic.commands.Command;
+import duke.logic.commands.DeleteLockerCommand;
+import duke.logic.commands.EditLockerCommand;
 import duke.logic.commands.ListCommand;
 
 import java.util.ArrayList;
@@ -29,6 +32,12 @@ public class Parser {
             return new ByeCommand();
         } else if (fullCommand.equalsIgnoreCase("list")) {
             return new ListCommand();
+        } else if (inputTask.equalsIgnoreCase("addBatch")) {
+            return new AddBatchCommand(splitInput);
+        } else if (inputTask.equalsIgnoreCase("delete")) {
+            return new DeleteLockerCommand(splitInput);
+        } else if (inputTask.equalsIgnoreCase("edit")) {
+            return new EditLockerCommand(splitInput);
         } else  {
             throw new DukeException(" Invalid command");
         }
