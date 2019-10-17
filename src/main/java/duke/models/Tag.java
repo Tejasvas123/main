@@ -1,5 +1,8 @@
 package duke.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import duke.exceptions.DukeException;
 
 import static java.util.Objects.requireNonNull;
@@ -14,13 +17,13 @@ public class Tag {
     public final String INVALID_TAG_NAME = "Tag names can either be <in-use>,<not-in-use>,"
             + "<unauthorized> or <broken>";
 
-    public Tag(String tagName) throws DukeException {
+    @JsonCreator
+    public Tag(@JsonProperty("tagName") String tagName) throws DukeException {
         requireNonNull(tagName);
         if(!checkValidTagName(tagName)) {
             throw new DukeException(INVALID_TAG_NAME);
         }
         this.tagName = tagName;
-
     }
 
     public boolean checkValidTagName(String test) {
@@ -30,5 +33,10 @@ public class Tag {
 
     public String toString() {
         return "[" + tagName + "]";
+    }
+
+    @JsonGetter("tagName")
+    public String getTagName() {
+        return tagName;
     }
 }

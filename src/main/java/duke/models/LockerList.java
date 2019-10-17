@@ -1,5 +1,8 @@
 package duke.models;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,11 +26,27 @@ public class LockerList {
         lockerList.remove(locker);
     }
 
+    public Locker getLocker(int index) {
+        return lockerList.get(index);
+    }
+
+    public int numLockers() {
+        return lockerList.size();
+    }
+
     public List<Locker> getAllLockers() {
         return lockerList;
     }
 
-    public int numTasks() {
-        return lockerList.size();
+
+    @JsonGetter("lockers")
+    public List<Locker> getLockerList() {
+        return lockerList;
     }
+
+    @JsonSetter("lockers")
+    public void setLLockerList(List<Locker> lockerList) {
+        this.lockerList = lockerList;
+    }
+
 }
