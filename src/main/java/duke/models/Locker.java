@@ -4,11 +4,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import static java.util.Objects.requireNonNull;
+
 public class Locker {
-    private int serialNumber;
-    private String address;
-    private String zone;
-    private Tag tag;
+    private final SerialNumber serialNumber;
+    private final Address address;
+    private final Zone zone;
+    private final Tag tag;
 
     /**
      * Locker stores all the information regarding the status of the locker.
@@ -19,8 +21,14 @@ public class Locker {
      */
 
     @JsonCreator
-    public Locker(@JsonProperty("serial") int serialNumber,@JsonProperty("address") String address,
-                  @JsonProperty("zone") String zone,@JsonProperty("tag") Tag tag) {
+    public Locker(@JsonProperty("serial") SerialNumber serialNumber,
+                  @JsonProperty("address") Address address,
+                  @JsonProperty("zone") Zone zone,
+                  @JsonProperty("tag") Tag tag) {
+        requireNonNull(serialNumber);
+        requireNonNull(address);
+        requireNonNull(zone);
+        requireNonNull(tag);
         this.serialNumber = serialNumber;
         this.address = address;
         this.zone = zone;
@@ -44,7 +52,8 @@ public class Locker {
     }
 
     public String toString() {
-        return "Locker #" + getSerialNumber() + ": " + "Area: " + address + " Zone: " + zone
+        return "Locker #" + serialNumber.getSerialNumberForLocker() + ": " + "Area: " + address.getAddress()
+                + " Zone: " + zone.getZone()
                 + " [" + getTag().tagName + "]";
     }
 
@@ -53,20 +62,19 @@ public class Locker {
         return tag;
     }
 
-    @JsonGetter("serialNumber")
-    public int getSerialNumber() {
+    @JsonGetter("serial")
+    public SerialNumber getSerialNumber() {
         return serialNumber;
     }
 
     @JsonGetter("address")
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
     @JsonGetter("zone")
-    public String getZone() {
+    public Zone getZone() {
         return zone;
     }
-
 
 }
