@@ -1,4 +1,4 @@
-package duke;
+package duke.parser;
 
 import duke.exceptions.DukeException;
 import duke.logic.commands.AddBatchCommand;
@@ -22,7 +22,7 @@ public class Parser {
      * @throws DukeException when the user inputs invalid command
      */
 
-    public static Command parse(String fullCommand) throws DukeException {
+    public Command parse(String fullCommand) throws DukeException {
         List<String> splitInput = new ArrayList<String>(
                 Arrays.asList(fullCommand.split(" ")));
         String inputTask = splitInput.get(0);
