@@ -2,11 +2,8 @@ package duke.parser;
 
 import duke.exceptions.DukeException;
 
-import duke.logic.commands.ByeCommand;
 import duke.logic.commands.Command;
-import duke.logic.commands.DeleteLockerCommand;
-import duke.logic.commands.EditLockerCommand;
-import duke.logic.commands.ListCommand;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,7 +33,7 @@ public class Parser {
         } else if (inputTask.equalsIgnoreCase("delete")) {
             return new DeleteLockerCommandParser().parse(fullCommand);
         } else if (inputTask.equalsIgnoreCase("edit")) {
-            return new EditLockerCommand(splitInput);
+            return new EditLockerCommandParser().parse(fullCommand);
         } else  {
             throw new DukeException(" Invalid command");
         }

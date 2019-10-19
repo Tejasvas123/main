@@ -11,6 +11,13 @@ public class AddBatchCommandParser {
 
     private List<String> splitInput = new ArrayList<>();
 
+    /**
+     * This function is used to parse the user input for adding batches.
+     * Later it will be included with all the possible checks for the validity of the command
+     * @param fullCommand stores the command entered by the user
+     * @return reference to the the class AddBatchCommand
+     * @throws DukeException when the command syntax is invalid
+     */
     public Command parse(String fullCommand) throws DukeException {
         if (fullCommand.trim().length() == 8) {
             throw new DukeException(" The description of add batch command cant be empty");
