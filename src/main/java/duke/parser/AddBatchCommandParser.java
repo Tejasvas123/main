@@ -71,26 +71,3 @@ public class AddBatchCommandParser {
 
     }
 }
-
-        /**if (fullCommand.trim().length() == 8) {
-            throw new DukeException(" The description of add batch command cant be empty");
-        }
-        int indexOfNumberPrefix = fullCommand.indexOf("n/");
-        int indexOfSerialPrefix = fullCommand.indexOf("s/");
-        int indexOfAreaPrefix = fullCommand.indexOf("a/");
-        int indexOfZonePrefix = fullCommand.indexOf("z/");
-
-        if (indexOfNumberPrefix < indexOfSerialPrefix && indexOfSerialPrefix < indexOfAreaPrefix
-                && indexOfAreaPrefix < indexOfZonePrefix && indexOfAreaPrefix != -1
-                && indexOfSerialPrefix != -1 && indexOfZonePrefix != -1 && indexOfNumberPrefix != -1) {
-            splitInput.add(fullCommand.substring(indexOfNumberPrefix + 2,indexOfSerialPrefix).trim());
-            splitInput.add(fullCommand.substring(indexOfSerialPrefix + 2, indexOfAreaPrefix).trim());
-            splitInput.add(fullCommand.substring(indexOfAreaPrefix + 2, indexOfZonePrefix).trim());
-            splitInput.add(fullCommand.substring(indexOfZonePrefix + 2));
-        } else {
-            throw new DukeException("Invalid command syntax");
-        }
-        return new AddBatchCommand(splitInput);
-    }
-}*/
-

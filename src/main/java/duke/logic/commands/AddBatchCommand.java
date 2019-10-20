@@ -6,7 +6,6 @@ import duke.models.LockerList;
 import duke.storage.FileHandling;
 import duke.ui.Ui;
 
-
 import java.util.List;
 
 import static java.util.Objects.requireNonNull;
