@@ -51,6 +51,10 @@ public class Locker {
         tag.tagName = Tag.NOT_IN_USE;
     }
 
+    /**
+     * This function is used to convert the locker info into displayable strings.
+     * @return a string in a format that can be used for printing out the current locker
+     */
     public String toString() {
         return "Locker #" + serialNumber.getSerialNumberForLocker() + ": " + "Area: " + address.getAddress()
                 + " Zone: " + zone.getZone()
