@@ -42,7 +42,7 @@ public class MapTokensToArguments {
      * @return the argument mapped to the token
      */
     public Optional<String> getValue(Token token) {
-        /*In case of multiple arguments related to a token
+        /*In case of multiple arguments related to a prefix
           this function will return the last argument associated with that token.
           Optional accounts for the case when the user does not input anything as argument
          */
