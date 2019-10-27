@@ -1,4 +1,4 @@
-package duke.models;
+package duke.models.tag;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonGetter;

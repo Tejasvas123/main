@@ -1,9 +1,9 @@
 package duke.parser;
 
 import duke.exceptions.DukeException;
-import duke.models.Address;
-import duke.models.SerialNumber;
-import duke.models.Zone;
+import duke.models.locker.Address;
+import duke.models.locker.SerialNumber;
+import duke.models.locker.Zone;
 
 import static java.util.Objects.requireNonNull;
 

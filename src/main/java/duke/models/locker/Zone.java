@@ -1,4 +1,4 @@
-package duke.models;
+package duke.models.locker;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonGetter;
@@ -11,6 +11,8 @@ public class Zone {
 
     public static final String ERROR_MESSAGE = " Zone can have at most 2 alphanumeric characters "
            + "and cannot be empty";
+
+    public static final String CHECK_REGEX = "^[a-zA-Z0-9]*$";
     public final String zone;
 
     /**
@@ -28,8 +30,8 @@ public class Zone {
         this.zone = zone;
     }
 
-    public static boolean checkIsValidZone(String test) {
-        return test.matches("^[a-zA-Z0-9]*$") && test.length() <= 2;
+    public static boolean checkIsValidZone(String zone) {
+        return zone.matches(CHECK_REGEX) && zone.length() == 1;
     }
 
     @JsonGetter("lockerZone")

@@ -1,6 +1,6 @@
 package duke.ui;
 
-import duke.models.Locker;
+import duke.models.locker.Locker;
 
 import java.util.Scanner;
 import java.util.List;

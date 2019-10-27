@@ -2,6 +2,7 @@ package duke.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import duke.models.locker.Locker;
 
 import java.util.ArrayList;
 import java.util.List;
