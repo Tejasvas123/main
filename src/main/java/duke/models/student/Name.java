@@ -1,0 +1,31 @@
+package duke.models.student;
+
+import duke.exceptions.DukeException;
+
+import static java.util.Objects.requireNonNull;
+
+public class Name {
+
+    public static final String ERROR_MESSAGE = " Name should contain only alpha numeric characters"
+            + " and should not be blank.";
+
+    public static final String CHECK_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public final String name;
+
+    public Name(String name) throws DukeException {
+        requireNonNull(name);
+        if (!checkIsValidName(name)) {
+            throw new DukeException(ERROR_MESSAGE);
+        }
+        this.name = name;
+    }
+
+    public static boolean checkIsValidName(String name) {
+        return name.matches(CHECK_REGEX);
+    }
+
+    public String getStudentName() {
+        return name;
+    }
+
+}
