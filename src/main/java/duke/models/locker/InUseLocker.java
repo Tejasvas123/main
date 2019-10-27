@@ -39,5 +39,4 @@ public class InUseLocker extends Locker {
                 + " StudentID:" + student.getMatricNumber().getStudentCourse();
     }
 
-
 }
