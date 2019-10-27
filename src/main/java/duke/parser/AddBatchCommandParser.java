@@ -35,7 +35,7 @@ public class AddBatchCommandParser {
     public Command parse(String userInput) throws DukeException {
         MapTokensToArguments mapTokensToArguments = ParserTokenizer
                 .tokenize(userInput, TOKEN_SIZE, TOKEN_SERIAL, TOKEN_ADDRESS, TOKEN_ZONE);
-        if (!checkAllPrefixesPresent(mapTokensToArguments,
+        if (!checkAllTokensPresent(mapTokensToArguments,
                 TOKEN_SIZE, TOKEN_SERIAL, TOKEN_ADDRESS, TOKEN_ZONE)
                 || !mapTokensToArguments.getTextBeforeFirstToken().isEmpty()) {
             throw new DukeException(" Invalid command format");
@@ -54,7 +54,7 @@ public class AddBatchCommandParser {
         return new AddBatchCommand(addBatchOfLockers);
     }
 
-    private static boolean checkAllPrefixesPresent(
+    private static boolean checkAllTokensPresent(
             MapTokensToArguments mapTokensToArguments, Token... tokens) {
         return Stream.of(tokens).allMatch(token -> mapTokensToArguments
                 .getValue(token).isPresent());

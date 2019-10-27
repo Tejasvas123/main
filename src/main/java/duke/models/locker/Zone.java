@@ -12,7 +12,7 @@ public class Zone {
     public static final String ERROR_MESSAGE = " Zone can have at most 2 alphanumeric characters "
            + "and cannot be empty";
 
-    public static final String CHECK_REGEX = "^[a-zA-Z0-9]*$";
+    public static final String CHECK_REGEX = "^[a-zA-Z]*$";
     public final String zone;
 
     /**

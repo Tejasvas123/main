@@ -2,8 +2,17 @@ package duke.parser;
 
 import duke.exceptions.DukeException;
 import duke.models.locker.Address;
+import duke.models.locker.LockerDate;
 import duke.models.locker.SerialNumber;
 import duke.models.locker.Zone;
+import duke.models.student.Email;
+import duke.models.student.Major;
+import duke.models.student.MatricNumber;
+import duke.models.student.Name;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static java.util.Objects.requireNonNull;
 
@@ -68,5 +77,56 @@ public class ParserCheck {
         } catch (NumberFormatException e) {
             throw new DukeException(" Please enter a positive integer for the number of lockers");
         }
+    }
+
+    public static Name parseName(String name) throws DukeException {
+        requireNonNull(name);
+        if (!Name.checkIsValidName(name.trim())) {
+            throw new DukeException(Name.ERROR_MESSAGE);
+        }
+        return new Name(name.trim());
+    }
+
+    public static MatricNumber parseMatricNumber(String matricNumber) throws DukeException {
+        requireNonNull(matricNumber);
+        if (!MatricNumber.checkIsValidMatricNumber(matricNumber.trim())) {
+            throw new DukeException(MatricNumber.ERROR_MESSAGE);
+        }
+        return new MatricNumber(matricNumber.trim());
+    }
+
+    public static Major parseMajor(String major) throws DukeException {
+        requireNonNull(major);
+        if (!Major.checkIsValidCourse(major)) {
+            throw new DukeException(Major.ERROR_MESSAGE);
+        }
+        return new Major(major.trim());
+    }
+
+    public static Email parseEmail(String email) throws DukeException {
+        requireNonNull(email);
+        if (!Email.checkIsValidEmail(email.trim())) {
+            throw new DukeException(Email.ERROR_MESSAGE);
+        }
+        return new Email(email.trim());
+    }
+
+    public static LockerDate parseDate(String date) throws DukeException {
+        requireNonNull(date);
+        if (!LockerDate.checkIsValidDate(date)) {
+            throw new DukeException(LockerDate.ERROR_MESSAGE);
+        }
+        return new LockerDate(date.trim());
+    }
+
+    public static List<Zone> parsePreferences(String preferences) throws DukeException {
+        requireNonNull(preferences);
+        List<Zone> getPreferences = new ArrayList<>();
+        List<String> getEachPreference = new ArrayList<String>();
+        getEachPreference = Arrays.asList(preferences.trim().split(" "));
+        for (String s: getEachPreference) {
+             getPreferences.add(parseZone(s));
+        }
+        return getPreferences;
     }
 }
