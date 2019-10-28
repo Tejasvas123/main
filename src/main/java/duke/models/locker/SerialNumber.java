@@ -39,4 +39,20 @@ public class SerialNumber {
     public String getSerialNumberForLocker() {
         return serialNumberForLocker;
     }
+
+    /* We need to override functions equals() and hashCode() in order to account for
+       used defined checking for equality while using streams
+     */
+    @Override
+    public boolean equals(Object other) {
+        return other == this //short circuit if the two objects are the same
+                || (other instanceof SerialNumber //handles all cases for null
+                && serialNumberForLocker.equals(((SerialNumber) other)
+                .serialNumberForLocker)); //checks for equality
+    }
+
+    @Override
+    public int hashCode() {
+        return serialNumberForLocker.hashCode();
+    }
 }

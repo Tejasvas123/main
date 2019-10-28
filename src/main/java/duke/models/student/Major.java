@@ -24,4 +24,19 @@ public class Major {
     public static boolean checkIsValidCourse(String course) {
         return course.matches(CHECK_REGEX);
     }
+
+    /* We need to override functions equals and hashCode in order to account for
+       user defined checks for equality while using streams
+     */
+    @Override
+    public boolean equals(Object other) {
+        return this == other //short circuit if both the objects are the same
+                || (other instanceof Major //handles all null instances and other irrelevant references
+                && course.equalsIgnoreCase(((Major) other).course)); //checks for equality
+    }
+
+    @Override
+    public int hashCode() {
+        return course.hashCode();
+    }
 }

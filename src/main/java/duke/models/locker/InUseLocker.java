@@ -3,6 +3,8 @@ package duke.models.locker;
 import duke.models.student.Student;
 import duke.models.tag.Tag;
 
+import java.util.Objects;
+
 import static java.util.Objects.requireNonNull;
 
 public class InUseLocker extends Locker {
@@ -37,6 +39,30 @@ public class InUseLocker extends Locker {
     public String toString() {
         return super.toString() + "\n" + " Name: " + student.getName().getStudentName()
                 + " StudentID:" + student.getMatricNumber().getStudentCourse();
+    }
+
+    /* We need to override functions equals() and hashCode() in order to account
+       for user defined checks for equality while using streams
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true; //both represent the same objects
+        }
+
+        if(!(other instanceof InUseLocker)) {
+            return false; //accounts for all null cases and irrelevant references
+        }
+
+        InUseLocker otherLocker = (InUseLocker) other;
+        return otherLocker.getStudent().equals(this.getStudent())
+                && otherLocker.getStartDate().equals(this.getStartDate())
+                && otherLocker.getEndDate().equals(this.getEndDate()); //all equality checks
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(student,startDate,endDate);
     }
 
 }

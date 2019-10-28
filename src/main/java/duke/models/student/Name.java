@@ -28,4 +28,19 @@ public class Name {
         return name;
     }
 
+    /* We need to override functions equals and hashCode in order to account for
+       user defined checks for equality while using streams.
+     */
+    @Override
+    public boolean equals(Object other) {
+        return other == this //checks whether the two objects are the same and short circuit
+                || (other instanceof Name //checks for null references and other irrelevant cases
+                && name.equalsIgnoreCase(((Name) other).name)); //checks for the equality
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
 }

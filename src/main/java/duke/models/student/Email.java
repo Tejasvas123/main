@@ -31,4 +31,19 @@ public class Email {
     public static boolean checkIsValidEmail(String email) {
         return email.matches(VALID_REGEX);
     }
+
+    /* We need to override functions equals and hashCode() in order to account
+       user defined checks for equality while using streams.
+     */
+    @Override
+    public boolean equals(Object other) {
+        return this == other //short circuit if both objects are the same
+                || (other instanceof Email // checks for all null values and irrelevant instances
+                && this.email.equals(((Email) other).email)); //checks for equality
+    }
+
+    @Override
+    public int hashCode() {
+        return email.hashCode();
+    }
 }

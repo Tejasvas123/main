@@ -44,4 +44,19 @@ public class Tag {
     public String getTagName() {
         return tagName;
     }
+
+    /* We need to override function equals() and hashCode() in order to account
+      for user defined checks for equality while using streams
+    */
+    @Override
+    public boolean equals(Object other) {
+        return this == other //short circuit for being the same object
+                || (other instanceof Tag //handles all null cases and other irrelevant instances
+                && tagName.equalsIgnoreCase(((Tag) other).tagName));//checks for eqaulity
+    }
+
+    @Override
+    public int hashCode() {
+        return tagName.hashCode();
+    }
 }

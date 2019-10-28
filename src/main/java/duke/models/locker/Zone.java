@@ -38,4 +38,19 @@ public class Zone {
     public String getZone() {
         return zone;
     }
+
+    /* We need to override functions equals() and hashCode() in order to account for
+      used defined checking for equality while using streams
+    */
+    @Override
+    public boolean equals(Object other) {
+        return other == this //short circuit if the two objects are the same
+                || (other instanceof Zone //handles all cases for null
+                && zone.equalsIgnoreCase(((Zone) other).zone)); //checks for equality
+    }
+
+    @Override
+    public int hashCode() {
+        return zone.hashCode();
+    }
 }

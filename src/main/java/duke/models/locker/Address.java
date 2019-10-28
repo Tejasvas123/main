@@ -36,4 +36,19 @@ public class Address {
     public String getAddress() {
         return address;
     }
+
+    /*We need to override equals and hashCode in order to account
+    for user defined checks for streams
+     */
+    @Override
+    public boolean equals(Object other) {
+        return other == this //short circuit if the two objects are same
+                || (other instanceof Address //handles all the cases for null
+                && address.equalsIgnoreCase(((Address) other).address));// check for equality
+    }
+
+    @Override
+    public int hashCode() {
+        return address.hashCode();
+    }
 }

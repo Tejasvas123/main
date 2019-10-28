@@ -32,4 +32,19 @@ public class MatricNumber {
     public String getStudentCourse() {
         return matricId;
     }
+
+    /* We need to override functions equals() and hashCode() in order to account for
+       user defined checks about equality while using streams
+     */
+    @Override
+    public boolean equals(Object other) {
+        return this == other //checks if the two objects are the same
+                || (other instanceof MatricNumber //checks for all null instances and irrelevant references
+                && matricId.equalsIgnoreCase(((MatricNumber) other).matricId)); //checks for equality
+    }
+
+    @Override
+    public int hashCode() {
+        return matricId.hashCode();
+    }
 }

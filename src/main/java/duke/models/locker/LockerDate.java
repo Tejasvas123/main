@@ -34,4 +34,19 @@ public class LockerDate {
         }
         return true;
     }
+
+    /* We need to override function equals and hashCode() in order
+       to account for user defined checks for equality using streams
+     */
+    @Override
+    public boolean equals(Object other) {
+        return other == this //short circuit if both the objects are the same
+                || (other instanceof LockerDate //checks for all instances of null
+                && date.equals(((LockerDate) other).date)); //check for equality
+    }
+
+    @Override
+    public int hashCode() {
+        return date.hashCode();
+    }
 }
