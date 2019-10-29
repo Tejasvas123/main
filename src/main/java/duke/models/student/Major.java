@@ -13,6 +13,11 @@ public class Major {
 
     public final String course;
 
+    /**
+     * This constructor instantiates the course/major of the student.
+     * @param course stores the course that the student is currently pursuing
+     * @throws DukeException when the course is in invalid format
+     */
     public Major(String course) throws DukeException {
         requireNonNull(course);
         if (!checkIsValidCourse(course)) {

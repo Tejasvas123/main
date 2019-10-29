@@ -18,6 +18,11 @@ public class LockerDate {
 
     public final String date;
 
+    /**
+     * This constructor is used to instantiate a valid Date.
+     * @param date stores the date that is to be assigned to the member field
+     * @throws DukeException when the date is in invalid format
+     */
     public LockerDate(String date) throws DukeException {
         requireNonNull(date);
         if (!checkIsValidDate(date)) {
@@ -26,6 +31,11 @@ public class LockerDate {
         this.date = date;
     }
 
+    /**
+     * This function is used to check whether the date is in correct format or not.
+     * @param date stores the date that is to be tested for its validity.
+     * @return true if the date is in valid format, false otherwise.
+     */
     public static boolean checkIsValidDate(String date) {
         try {
             LocalDate.parse(date,checkDateFormat);

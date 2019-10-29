@@ -5,12 +5,15 @@ import duke.logic.commands.AssignLockerCommand;
 import duke.logic.commands.Command;
 import duke.models.locker.LockerDate;
 import duke.models.locker.Zone;
-import duke.models.student.*;
+import duke.models.student.Email;
+import duke.models.student.Major;
+import duke.models.student.MatricNumber;
+import duke.models.student.Name;
+import duke.models.student.Student;
 import duke.parser.utilities.MapTokensToArguments;
 import duke.parser.utilities.ParserTokenizer;
 import duke.parser.utilities.Token;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -24,6 +27,13 @@ import static duke.parser.utilities.Syntax.TOKEN_STUDENT_NAME;
 
 public class AssignLockerCommandParser {
 
+    /**
+     * This function is used to check if all the entries entered by the user are valid as per
+     * the specifications of the assign command.
+     * @param userInput stores the userInput
+     * @return a reference to the AssignLockerCommand()
+     * @throws DukeException when the command is in invalid format
+     */
     public Command parse(String userInput) throws DukeException {
         MapTokensToArguments mapTokensToArguments = ParserTokenizer
                 .tokenize(userInput,TOKEN_STUDENT_NAME,TOKEN_STUDENTID,TOKEN_EMAIL,

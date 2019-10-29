@@ -90,6 +90,11 @@ public class Ui {
         printDash();
     }
 
+    /**
+     * This function is used to notify the user that SpongeBob has successfully assigned
+     * the locker for the user.
+     * @param locker stores the string to show the locker that has been assigned
+     */
     public void printSuccessfulAllocation(String locker) {
         printSpaces(" I have successfully assigned a locker to the student. "
                 + "Here are the details:");
@@ -152,6 +157,10 @@ public class Ui {
         printDash();
     }
 
+    /**
+     *  This function is used to notify the user that there were no available lockers in his list
+     *  of preferences.
+     */
     public void showNoLockersFoundInPreferences() {
         printSpaces(" Unable to find any free lockers in the preferences stated.");
         printSpaces(" Looking for free lockers in the entire system ...");

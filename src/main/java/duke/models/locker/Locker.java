@@ -56,7 +56,9 @@ public class Locker {
         tag.tagName = Tag.NOT_IN_USE;
     }
 
-    public void setStatusAsInUse() { tag.tagName = Tag.IN_USE;}
+    public void setStatusAsInUse() {
+        tag.tagName = Tag.IN_USE;
+    }
 
     /**
      * This function is used to convert the locker info into displayable strings.

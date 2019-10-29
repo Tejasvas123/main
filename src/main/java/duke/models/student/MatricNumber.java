@@ -17,6 +17,11 @@ public class MatricNumber {
 
     public final String matricId;
 
+    /**
+     * This constructor instantiates the student ID / the matric number of the student.
+     * @param matricId stores the matric number of the student
+     * @throws DukeException when the matric number is in invalid format
+     */
     public MatricNumber(String matricId) throws DukeException {
         requireNonNull(matricId);
         if (!checkIsValidMatricNumber(matricId)) {

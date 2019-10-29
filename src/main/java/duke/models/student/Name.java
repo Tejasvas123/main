@@ -12,6 +12,11 @@ public class Name {
     public static final String CHECK_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
     public final String name;
 
+    /**
+     * This constructor instantiates the name of the student.
+     * @param name stores the name of the student
+     * @throws DukeException when the name is in invalid format
+     */
     public Name(String name) throws DukeException {
         requireNonNull(name);
         if (!checkIsValidName(name)) {

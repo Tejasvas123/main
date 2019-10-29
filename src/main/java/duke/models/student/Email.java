@@ -20,6 +20,11 @@ public class Email {
 
     public final String email;
 
+    /**
+     * This constructor instantiates the email id of a student.
+     * @param email stores the email id of a student
+     * @throws DukeException when the user enters invalid email id
+     */
     public Email(String email) throws DukeException {
         requireNonNull(email);
         if (!checkIsValidEmail(email)) {

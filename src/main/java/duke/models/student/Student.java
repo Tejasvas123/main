@@ -10,6 +10,13 @@ public class Student {
     private final Email email;
     private final Major major;
 
+    /**
+     * This constructor instantiates the student and all its properties.
+     * @param name stores the name of the student
+     * @param matricNumber stores the student ID/ matric number of the student
+     * @param email stores the email id of the student
+     * @param major stores the major/course of the student
+     */
     public Student(Name name, MatricNumber matricNumber, Email email, Major major) {
         requireNonNull(name);
         requireNonNull(matricNumber);

@@ -22,6 +22,7 @@ public class LockerList {
     public void addLocker(Locker locker) {
         lockerList.add(locker);
     }
+
     public void addLockerInPosition(Locker locker, int index) {
         lockerList.add(index,locker);
     }

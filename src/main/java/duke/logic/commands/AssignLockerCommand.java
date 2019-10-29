@@ -25,6 +25,13 @@ public class AssignLockerCommand extends Command {
     private final List<Zone> preferences;
     public static final int FIRST_FREE_LOCKER = 0;
 
+    /**
+     * This constructor instantiates all the fields necessary for assigning a locker to a student.
+     * @param student stores the information ond details of the student
+     * @param startDate stores the starting date of the subscription
+     * @param endDate stores the ending date of the subscription
+     * @param preferences  stores the preferences as a list of zones for the student
+     */
     public AssignLockerCommand(Student student, LockerDate startDate,
                                LockerDate endDate, List<Zone> preferences) {
         requireNonNull(student);
@@ -47,7 +54,7 @@ public class AssignLockerCommand extends Command {
         storage.saveData(lockerList);
     }
 
-    public int assignLockerToStudent(LockerList lockerList, Ui ui) throws DukeException {
+    private int assignLockerToStudent(LockerList lockerList, Ui ui) throws DukeException {
 
         Locker freeLocker = getFreeLocker(lockerList.getAllLockers(),ui);
         int storeIndex = lockerList.getIndexOfLocker(freeLocker);
@@ -60,29 +67,30 @@ public class AssignLockerCommand extends Command {
         return storeIndex;
     }
 
-    public static Predicate<Locker> findLockerBasedOnPreferences(Zone zone) throws DukeException {
+    private Predicate<Locker> findLockerBasedOnPreferences(Zone zone) throws DukeException {
         Tag checkTag = new Tag(Tag.NOT_IN_USE);
         return p -> p.getTag().equals(checkTag)
                 && p.getZone().equals(zone);
     }
 
-    public static Predicate<Locker> findLockersInAnyZone() throws DukeException {
+    private Predicate<Locker> findLockersInAnyZone() throws DukeException {
         Tag checkTag = new Tag(Tag.NOT_IN_USE);
         return p -> p.getTag().equals(checkTag);
     }
 
-    public List<Locker> getListOfFreeLockersInAnyZone(List<Locker> lockers) throws DukeException {
+    private List<Locker> getListOfFreeLockersInAnyZone(List<Locker> lockers) throws DukeException {
         return lockers.stream()
                 .filter(findLockersInAnyZone())
                 .collect(Collectors.toList());
     }
-    public List<Locker> getListOfFreeLockersInZone(List<Locker> lockers, Zone zone) throws DukeException {
+
+    private List<Locker> getListOfFreeLockersInZone(List<Locker> lockers, Zone zone) throws DukeException {
         return lockers.stream()
                 .filter(findLockerBasedOnPreferences(zone))
                 .collect(Collectors.<Locker>toList());
     }
 
-    public Locker getFreeLocker(List<Locker> lockerList, Ui ui) throws DukeException {
+    private Locker getFreeLocker(List<Locker> lockerList, Ui ui) throws DukeException {
         for (Zone zone: preferences) {
             List<Locker> freeLockersInZone =
                     getListOfFreeLockersInZone(lockerList,zone);

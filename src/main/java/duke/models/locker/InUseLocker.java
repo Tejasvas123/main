@@ -12,6 +12,16 @@ public class InUseLocker extends Locker {
     private final LockerDate startDate;
     private final LockerDate endDate;
 
+    /**
+     * This constructor instantiates a locker that is currently being used by a student.
+     * @param serialNumber stores the serial number of the locker
+     * @param address stores the location of the locker
+     * @param zone stores the zone assigned to the locker
+     * @param tag stores the status of the locker (in-use)
+     * @param student stores the details associated with students
+     * @param startDate stores the starting date of the locker subscription
+     * @param endDate stores the ending date of the locker subscription
+     */
     public InUseLocker(SerialNumber serialNumber, Address address, Zone zone, Tag tag,
                        Student student,LockerDate startDate,LockerDate endDate) {
         super(serialNumber,address,zone,tag);
@@ -50,7 +60,7 @@ public class InUseLocker extends Locker {
             return true; //both represent the same objects
         }
 
-        if(!(other instanceof InUseLocker)) {
+        if (!(other instanceof InUseLocker)) {
             return false; //accounts for all null cases and irrelevant references
         }
 
