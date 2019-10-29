@@ -60,6 +60,18 @@ public class Locker {
         tag.tagName = Tag.IN_USE;
     }
 
+    public boolean isPresent(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Locker)){
+            return false;
+        }
+
+        return this.getSerialNumber().equals(((Locker) other).getSerialNumber());
+    }
+
     /**
      * This function is used to convert the locker info into displayable strings.
      *
