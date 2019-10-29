@@ -11,12 +11,12 @@ public class Email {
             + "\n 1. The local-part and the domain name are separated by '@'"
             + "\n 2. The local-part should contain only aplhanumeric characters and special symbols"
             + " like (!#$%&'*+/=?`{|}~^.-)"
-            + "\n 3. The domain name should contain at least two characters and start and end with"
+            + "\n 3. The domain name should contain at least two characters and start and end with "
             + "alphanumeric characters"
             + "\n 4. The domain name should consists of only alphanumeric characters, a '.' "
             + "or a '-' in the middle (optional)";
-    public static final String VALID_REGEX = "^[\\W!#$%&'*+/=?`{|}~^.-]+" + "@" + "[^\\W_]"
-            + "[a-zA-Z0-9.-]*" + "[^\\W_]$";
+    public static final String VALID_REGEX = "^[\\w" + "!#$%&'*+/=?`{|}~^.-" + "]+" + "@"
+            + "[^\\W_]" +  "[a-zA-Z0-9.-]*" + "[^\\W_]$";
 
     public final String email;
 
