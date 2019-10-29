@@ -124,8 +124,16 @@ public class ParserCheck {
         List<Zone> getPreferences = new ArrayList<>();
         List<String> getEachPreference = new ArrayList<String>();
         getEachPreference = Arrays.asList(preferences.trim().split(" "));
+        //Only the preferences with a valid zone name will be added to the list of preferences
         for (String s: getEachPreference) {
-             getPreferences.add(parseZone(s));
+             if (Zone.checkIsValidZone(s)) {
+                 getPreferences.add(parseZone(s));
+             }
+        }
+
+        if (getPreferences.size() == 0) {
+            throw new DukeException(" There must be at least one valid zone listed under preferences"
+                    + " \n" + Zone.ERROR_MESSAGE);
         }
         return getPreferences;
     }

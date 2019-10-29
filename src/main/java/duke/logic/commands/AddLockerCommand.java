@@ -6,18 +6,23 @@ import duke.models.LockerList;
 import duke.storage.FileHandling;
 import duke.ui.Ui;
 
+import static java.util.Objects.requireNonNull;
+
 
 public class AddLockerCommand extends Command {
 
     private final Locker addLocker;
 
     public AddLockerCommand(Locker addLocker) {
+        requireNonNull(addLocker);
         this.addLocker = addLocker;
     }
 
     @Override
     public void execute(LockerList lockerList, Ui ui, FileHandling storage) throws DukeException {
-
+        requireNonNull(lockerList);
+        requireNonNull(ui);
+        requireNonNull(storage);
         lockerList.addLocker(addLocker);
         String lockerA = addLocker.toString();
         ui.printAddLocker(lockerList.getAllLockers(),lockerA);

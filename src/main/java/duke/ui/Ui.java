@@ -90,6 +90,13 @@ public class Ui {
         printDash();
     }
 
+    public void printSuccessfulAllocation(String locker) {
+        printSpaces(" I have successfully assigned a locker to the student. "
+                + "Here are the details:");
+        printSpaces(" " + locker);
+        printDash();
+    }
+
     /**
      * This function tells the user that Duke has snoozed/postponed/rescheduled the task.
      * @param taskA stores the task that is to be added to the list.

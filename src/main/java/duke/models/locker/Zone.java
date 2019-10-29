@@ -9,7 +9,7 @@ import static java.util.Objects.requireNonNull;
 
 public class Zone {
 
-    public static final String ERROR_MESSAGE = " Zone can have at most 2 alphanumeric characters "
+    public static final String ERROR_MESSAGE = " Zone should have only 1 alphanumeric character "
            + "and cannot be empty";
 
     public static final String CHECK_REGEX = "^[a-zA-Z]*$";

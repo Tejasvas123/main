@@ -1,6 +1,7 @@
 package duke.parser;
 
 import duke.exceptions.DukeException;
+import duke.logic.commands.AssignLockerCommand;
 import duke.logic.commands.Command;
 import duke.models.locker.LockerDate;
 import duke.models.locker.Zone;
