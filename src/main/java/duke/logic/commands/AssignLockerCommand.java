@@ -42,14 +42,14 @@ public class AssignLockerCommand extends Command {
         requireNonNull(lockerList);
         requireNonNull(ui);
         requireNonNull(storage);
-        int storeIndex = assignLockerToStudent(lockerList);
+        int storeIndex = assignLockerToStudent(lockerList,ui);
         ui.printSuccessfulAllocation(lockerList.getLocker(storeIndex).toString());
         storage.saveData(lockerList);
     }
 
-    public int assignLockerToStudent(LockerList lockerList) throws DukeException {
+    public int assignLockerToStudent(LockerList lockerList, Ui ui) throws DukeException {
 
-        Locker freeLocker = getFreeLocker(lockerList.getAllLockers());
+        Locker freeLocker = getFreeLocker(lockerList.getAllLockers(),ui);
         int storeIndex = lockerList.getIndexOfLocker(freeLocker);
         lockerList.deleteLocker(freeLocker);
         freeLocker.setStatusAsInUse();
@@ -82,7 +82,7 @@ public class AssignLockerCommand extends Command {
                 .collect(Collectors.<Locker>toList());
     }
 
-    public Locker getFreeLocker(List<Locker> lockerList) throws DukeException {
+    public Locker getFreeLocker(List<Locker> lockerList, Ui ui) throws DukeException {
         for (Zone zone: preferences) {
             List<Locker> freeLockersInZone =
                     getListOfFreeLockersInZone(lockerList,zone);
@@ -97,7 +97,9 @@ public class AssignLockerCommand extends Command {
         if (freeLockersInAnyZone.size() == 0) {
             throw new DukeException(" There are no available lockers at the moment");
         }
-
+        //We need to inform the user that a locker has been assigned not in the preferred
+        //location
+        ui.showNoLockersFoundInPreferences();
         return freeLockersInAnyZone.get(FIRST_FREE_LOCKER);
     }
 }

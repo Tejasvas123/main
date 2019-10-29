@@ -152,6 +152,12 @@ public class Ui {
         printDash();
     }
 
+    public void showNoLockersFoundInPreferences() {
+        printSpaces(" Unable to find any free lockers in the preferences stated.");
+        printSpaces(" Looking for free lockers in the entire system ...");
+        printDash();
+    }
+
     /**
      * This function tells the user that SpongeBob has deleted the lockers from the list.
      * @param lockerList used for showing the number of lockers left in the list.
