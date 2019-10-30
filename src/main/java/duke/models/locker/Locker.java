@@ -121,7 +121,7 @@ public class Locker {
         return otherLocker.getSerialNumber().equals(this.getSerialNumber())
                 && otherLocker.getAddress().equals(this.getAddress())
                 && otherLocker.getZone().equals(this.getZone())
-                && otherLocker.getTag().equals(this.getTag()); //handles checks for equality
+                && otherLocker.getTag().equals(this.getTag());//handles checks for equality
     }
 
     @Override

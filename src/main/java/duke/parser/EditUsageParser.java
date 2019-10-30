@@ -24,6 +24,7 @@ public class EditUsageParser {
      * @return reference to the class EditLockerCommand
      * @throws DukeException when the user input is invalid
      */
+
     public Command parse(String userInput) throws DukeException {
         requireNonNull(userInput);
         MapTokensToArguments mapTokensToArguments = ParserTokenizer

@@ -23,13 +23,11 @@ public class AddLockerCommand extends Command {
         requireNonNull(lockerList);
         requireNonNull(ui);
         requireNonNull(storage);
-<<<<<<< HEAD
         if (lockerList.isPresentLocker(addLocker)) {
             throw new DukeException(" Duplicate entries not allowed. The serial number " +
                     "should be unique.");
         }
-=======
->>>>>>> f1dd864f11cdbb6b26f1e2952107be62f90ac32d
+
         lockerList.addLocker(addLocker);
         String lockerA = addLocker.toString();
         ui.printAddLocker(lockerList.getAllLockers(),lockerA);

@@ -5,6 +5,7 @@ import duke.exceptions.DukeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 
 import static java.util.Objects.requireNonNull;
 
@@ -40,6 +41,20 @@ public class LockerDate {
         try {
             LocalDate.parse(date,checkDateFormat);
         } catch (DateTimeParseException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public static boolean isDifferenceBetweenDatesValid(String startDate,String endDate) {
+        LocalDate localStartDate = LocalDate.parse(startDate,checkDateFormat);
+        LocalDate localEndDate = LocalDate.parse(endDate,checkDateFormat);
+        long daysBetween = localStartDate.until(localEndDate, ChronoUnit.DAYS);
+        if (daysBetween <= 6 || daysBetween > 365) {
             return false;
         }
         return true;

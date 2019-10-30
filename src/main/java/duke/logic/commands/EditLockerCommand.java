@@ -47,7 +47,7 @@ public class EditLockerCommand extends Command {
     @Override
     public void execute(LockerList lockerList, Ui ui, FileHandling storage) throws DukeException {
         Locker editedLocker = editLockerDetails(lockerList,ui);
-        ui.showSuccessfullyEdited(editedLocker);
+        ui.showSuccessfullyEdited(editedLocker.toString());
         storage.saveData(lockerList);
     }
 
@@ -56,7 +56,7 @@ public class EditLockerCommand extends Command {
         Locker editedLocker = createEditedLocker(lockerToEdit,editLocker);
         int storeIndex = lockerList.getIndexOfLocker(lockerToEdit);
         if (!(editedLocker.getSerialNumber().equals(lockerToEdit.getSerialNumber()))) {
-            CommandCheck.isAlreadyPresent(editLocker.getSerialNumber());
+            CommandCheck.isAlreadyPresent(editedLocker.getSerialNumber(),lockerList);
         }
 
         if (!validationChecks(lockerToEdit,editedLocker)) {
@@ -83,11 +83,10 @@ public class EditLockerCommand extends Command {
 
     }
 
-    private void assignNewLocker(Locker lockerToEdit, LockerList lockerList, Ui ui) {
+    private void assignNewLocker(Locker lockerToEdit, LockerList lockerList, Ui ui) throws DukeException {
         assert lockerToEdit instanceof InUseLocker;
         InUseLocker inUseLocker = ((InUseLocker) lockerToEdit);
-        List<Locker> getFreeLockers = lockerList.getMatchingLockers(
-                CommandCheck.findLockersInAnyZone());
+        List<Locker> getFreeLockers = CommandCheck.findLockersInAnyZone(lockerList);
         if (getFreeLockers.size() == 0) {
             ui.showNoAvailableLockers();
         } else {
@@ -167,9 +166,9 @@ public class EditLockerCommand extends Command {
             setZone(copyEditLocker.zone);
             setCondition(copyEditLocker.tag);
         }
-
-        public boolean checkIfSerialNumberIsEdited() {
-            return serialNumber != null;
+        public boolean checkAnyFieldUpdated() {
+            return (serialNumber != null || address != null
+                    || zone != null || tag != null);
         }
         public void setSerialNumber(SerialNumber serialNumber) {
             this.serialNumber = serialNumber;

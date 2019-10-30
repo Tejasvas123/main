@@ -96,12 +96,22 @@ public class Ui {
      * @param locker stores the string to show the locker that has been assigned
      */
     public void printSuccessfulAllocation(String locker) {
-        printSpaces(" I have successfully assigned a locker to the student. "
+        printSpaces(" I have successfully assigned a new locker to the student. "
                 + "Here are the details:");
         printSpaces(" " + locker);
         printDash();
     }
 
+    public void showSuccessfullyEdited(String editedLocker) {
+        printSpaces(" I have successfully edited the locker properties.");
+        printSpaces(" " + editedLocker);
+        printDash();
+    }
+
+    public void showNoAvailableLockers() {
+        printSpaces( " There are no available lockers at the moment. ");
+        printSpaces(" Unfortunately I will have to terminate the subscription of the student");
+    }
     /**
      * This function tells the user that Duke has snoozed/postponed/rescheduled the task.
      * @param taskA stores the task that is to be added to the list.

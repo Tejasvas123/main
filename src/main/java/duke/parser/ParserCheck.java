@@ -190,4 +190,12 @@ public class ParserCheck {
         return new Tag(status);
     }
 
+    public static void parseDifferenceBetweenStartAndEndDate(LockerDate startDate,
+                                                             LockerDate endDate) throws DukeException {
+        if (!LockerDate.isDifferenceBetweenDatesValid(startDate.getDate(),
+                endDate.getDate())) {
+            throw new DukeException(" There should be a difference of at least 7 days " +
+                    "and at most 365 days between the starting and ending dates of lockers");
+        }
+    }
 }

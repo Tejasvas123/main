@@ -13,10 +13,6 @@ import duke.ui.Ui;
 
 import java.util.List;
 import java.util.function.Predicate;
-<<<<<<< HEAD
-=======
-import java.util.stream.Collectors;
->>>>>>> f1dd864f11cdbb6b26f1e2952107be62f90ac32d
 
 import static java.util.Objects.requireNonNull;
 
@@ -59,33 +55,21 @@ public class AssignLockerCommand extends Command {
 
     private int assignLockerToStudent(LockerList lockerList, Ui ui) throws DukeException {
 
-<<<<<<< HEAD
         Locker freeLocker = getFreeLocker(lockerList,ui);
         int storeIndex = lockerList.getIndexOfLocker(freeLocker);
         freeLocker.setStatusAsInUse();
         Locker lockerAssignedToStudent = getLockerToAssign(freeLocker);
-=======
-        Locker freeLocker = getFreeLocker(lockerList.getAllLockers(),ui);
-        int storeIndex = lockerList.getIndexOfLocker(freeLocker);
-        lockerList.deleteLocker(freeLocker);
-        freeLocker.setStatusAsInUse();
-        Locker lockerAssignedToStudent = new InUseLocker(freeLocker.getSerialNumber(),
-                freeLocker.getAddress(),freeLocker.getZone(),freeLocker.getTag(),student,
-                startDate,endDate);
->>>>>>> f1dd864f11cdbb6b26f1e2952107be62f90ac32d
+
         lockerList.addLockerInPosition(lockerAssignedToStudent,storeIndex);
         return storeIndex;
     }
 
-<<<<<<< HEAD
     private Locker getLockerToAssign(Locker freeLocker) {
         return new InUseLocker(freeLocker.getSerialNumber(),
                 freeLocker.getAddress(),freeLocker.getZone(),freeLocker.getTag(),
                 student, startDate, endDate);
     }
 
-=======
->>>>>>> f1dd864f11cdbb6b26f1e2952107be62f90ac32d
     private Predicate<Locker> findLockerBasedOnPreferences(Zone zone) throws DukeException {
         Tag checkTag = new Tag(Tag.NOT_IN_USE);
         return p -> p.getTag().equals(checkTag)
@@ -97,29 +81,10 @@ public class AssignLockerCommand extends Command {
         return p -> p.getTag().equals(checkTag);
     }
 
-<<<<<<< HEAD
     private Locker getFreeLocker(LockerList lockerList, Ui ui) throws DukeException {
         for (Zone zone: preferences) {
             List<Locker> freeLockersInZone = lockerList.getMatchingLockers
                     (findLockerBasedOnPreferences(zone));
-=======
-    private List<Locker> getListOfFreeLockersInAnyZone(List<Locker> lockers) throws DukeException {
-        return lockers.stream()
-                .filter(findLockersInAnyZone())
-                .collect(Collectors.toList());
-    }
-
-    private List<Locker> getListOfFreeLockersInZone(List<Locker> lockers, Zone zone) throws DukeException {
-        return lockers.stream()
-                .filter(findLockerBasedOnPreferences(zone))
-                .collect(Collectors.<Locker>toList());
-    }
-
-    private Locker getFreeLocker(List<Locker> lockerList, Ui ui) throws DukeException {
-        for (Zone zone: preferences) {
-            List<Locker> freeLockersInZone =
-                    getListOfFreeLockersInZone(lockerList,zone);
->>>>>>> f1dd864f11cdbb6b26f1e2952107be62f90ac32d
             if (freeLockersInZone.size() > 0) {
                 return freeLockersInZone.get(FIRST_FREE_LOCKER);
             }
@@ -127,12 +92,9 @@ public class AssignLockerCommand extends Command {
         //If the control reaches here, that means SpongeBob was unable to allocate
         //any Lockers in the given preferences and hence we will arbitrarily
         //assign any locker that is free
-<<<<<<< HEAD
         List<Locker> freeLockersInAnyZone = lockerList.getMatchingLockers(
                 findLockersInAnyZone());
-=======
-        List<Locker> freeLockersInAnyZone = getListOfFreeLockersInAnyZone(lockerList);
->>>>>>> f1dd864f11cdbb6b26f1e2952107be62f90ac32d
+
         if (freeLockersInAnyZone.size() == 0) {
             throw new DukeException(" There are no available lockers at the moment");
         }
