@@ -78,21 +78,4 @@ public class ParserTokenizer {
         return (arg.substring(startIndex,nextPos.getStartPosition()).trim());
     }
 
-    private static class PositionOfToken {
-        private int startPosition;
-        private final Token token;
-
-        public PositionOfToken(Token token, int startPosition) {
-            this.token = token;
-            this.startPosition = startPosition;
-        }
-
-        int getStartPosition() {
-            return startPosition;
-        }
-
-        Token getToken() {
-            return token;
-        }
-    }
 }

@@ -52,7 +52,7 @@ public class EditLockerCommand extends Command {
     }
 
     private Locker editLockerDetails(LockerList lockerList, Ui ui) throws DukeException {
-        Locker lockerToEdit = getLockerToEdit(lockerList);
+        Locker lockerToEdit = CommandCheck.getLockerToEdit(lockerList,serialNumberOfLockerToEdit);
         Locker editedLocker = createEditedLocker(lockerToEdit,editLocker);
         int storeIndex = lockerList.getIndexOfLocker(lockerToEdit);
         if (!(editedLocker.getSerialNumber().equals(lockerToEdit.getSerialNumber()))) {
@@ -135,20 +135,6 @@ public class EditLockerCommand extends Command {
             return true;
         }
         return false;
-    }
-
-    private Locker getLockerToEdit(LockerList lockerList) throws DukeException {
-        List<Locker> listOfLockers;
-        listOfLockers = lockerList.getMatchingLockers(isMatchingSerialNumber());
-        if (listOfLockers.size() == 0) {
-            throw new DukeException(" There are no lockers associated to the serial number entered");
-        }
-        return listOfLockers.get(GET_FIRST_INDEX);
-
-    }
-
-    private Predicate<Locker> isMatchingSerialNumber() {
-        return p -> p.getSerialNumber().equals(serialNumberOfLockerToEdit);
     }
 
     public static class EditLocker {

@@ -34,6 +34,10 @@ public class EditUsageParser {
                 .getTextBeforeFirstToken());
         EditStudent editStudent = new EditStudent();
         EditLockerDate editDate = new EditLockerDate();
+        if (!(editDate.checkAnyFieldUpdated() || editStudent.checkAnyFieldUpdated())) {
+            throw new DukeException(" At least one field must be provided while updating usage");
+        }
+
         getParametersForStudent(editStudent, mapTokensToArguments);
         getParametersForLockerDate(editDate,mapTokensToArguments);
         return new EditUsageCommand(serialNumber,editStudent,editDate);

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class CommandCheck {
+    private static final int GET_FIRST_INDEX = 0;
 
     public static List<Locker> findLockersInAnyZone(LockerList lockerList) throws DukeException {
         Tag checkAvailableTag = new Tag(Tag.NOT_IN_USE);
@@ -27,5 +28,20 @@ public class CommandCheck {
     private static Predicate<Locker> findLocker() throws DukeException {
         Tag checkTag = new Tag(Tag.NOT_IN_USE);
         return p -> p.getTag().equals(checkTag);
+    }
+
+    public static Locker getLockerToEdit(LockerList lockerList,
+                                         SerialNumber serialNumber) throws DukeException {
+        List<Locker> listOfLockers;
+        listOfLockers = lockerList.getMatchingLockers(isMatchingSerialNumber(serialNumber));
+        if (listOfLockers.size() == 0) {
+            throw new DukeException(" There are no lockers associated to the serial number entered");
+        }
+        return listOfLockers.get(GET_FIRST_INDEX);
+
+    }
+
+    private static Predicate<Locker> isMatchingSerialNumber(SerialNumber serialNumber) {
+        return p -> p.getSerialNumber().equals(serialNumber);
     }
 }
