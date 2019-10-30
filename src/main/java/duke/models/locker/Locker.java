@@ -3,6 +3,7 @@ package duke.models.locker;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import duke.models.student.Student;
 import duke.models.tag.Tag;
 
 

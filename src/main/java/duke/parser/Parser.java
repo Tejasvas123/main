@@ -15,7 +15,8 @@ public class Parser {
     private static final String ADD_LOCKER_COMMAND = "addlocker";
     private static final String ADD_BATCH_COMMAND = "addbatch";
     private static final String DELETE_LOCKER_COMMAND = "delete";
-    private static final String EDIT_LOCKER_COMMAND = "edit";
+    private static final String EDIT_LOCKER_COMMAND = "editLocker";
+    private static final String EDIT_USAGE_COMMAND = "editUsage";
     private static final String ASSIGN_LOCKER_COMMAND = "assign";
     private static final String LIST_COMMAND = "list";
     private static final String EXIT_COMMAND = "bye";
@@ -46,6 +47,8 @@ public class Parser {
             return new DeleteLockerCommandParser().parse(arguments);
         case EDIT_LOCKER_COMMAND:
             return new EditLockerCommandParser().parse(arguments);
+        case EDIT_USAGE_COMMAND:
+            return new EditUsageParser().parse(arguments);
         case LIST_COMMAND:
             return new ListCommandParser().parse();
         case EXIT_COMMAND:
