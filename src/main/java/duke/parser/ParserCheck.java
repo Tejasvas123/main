@@ -131,7 +131,6 @@ public class ParserCheck {
 
     /**
      * This function parses the email of the student.
-     *
      * @param email stores the email id of the student
      * @return a valid instance of Email
      * @throws DukeException when the email is in invalid format
@@ -146,7 +145,6 @@ public class ParserCheck {
 
     /**
      * This function parses the date for the subscription of the lockers.
-     *
      * @param date stores the date for subscription
      * @return a valid instance of LockerDate
      * @throws DukeException when the date is in invalid format
@@ -161,7 +159,6 @@ public class ParserCheck {
 
     /**
      * This function is used to parse the user preferences for allocation of lockers.
-     *
      * @param preferences stores the preferences of the user.
      * @return a list of all valid zones
      * @throws DukeException when there are no valid zones in the list of preferences
