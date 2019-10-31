@@ -5,10 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import duke.exceptions.DukeException;
 import duke.models.LockerList;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 
 public class FileHandling {
@@ -27,8 +27,10 @@ public class FileHandling {
     public LockerList retrieveData() throws DukeException {
 
         try {
-            FileInputStream readFile = new FileInputStream(this.file);
-            LockerList lockers = getObjectMapper().readValue(readFile, LockerList.class);
+            InputStream is = getClass().getResourceAsStream(this.file);
+            //FileInputStream readFile = new FileInputStream(this.file);
+            LockerList lockers = getObjectMapper().readValue(is, LockerList.class);
+            is.close();
             return lockers;
 
         } catch (FileNotFoundException e) {
