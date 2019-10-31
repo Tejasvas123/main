@@ -27,6 +27,10 @@ public class Address {
         this.address = address;
     }
 
+    public Address() {
+
+    }
+
     public static boolean checkIsValidAddress(String address) {
         return address.matches(CHECK_REGEX);
     }

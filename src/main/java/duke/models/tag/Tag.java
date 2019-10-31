@@ -34,6 +34,10 @@ public class Tag {
         this.tagName = tagName;
     }
 
+    public Tag() {
+
+    }
+
     public static boolean checkValidTagName(String test) {
         return (test.equalsIgnoreCase(IN_USE) || test.equalsIgnoreCase(NOT_IN_USE)
                 || test.equalsIgnoreCase(UNAUTHORIZED) || test.equalsIgnoreCase(BROKEN));

@@ -32,6 +32,9 @@ public class MatricNumber {
         this.matricId = matricId;
     }
 
+    public MatricNumber() {
+
+    }
     @JsonGetter("id")
     public String getMatricId() {
         return matricId;

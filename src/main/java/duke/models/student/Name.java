@@ -27,6 +27,9 @@ public class Name {
         this.name = name;
     }
 
+    public Name() {
+
+    }
     public static boolean checkIsValidName(String name) {
         return name.matches(CHECK_REGEX);
     }

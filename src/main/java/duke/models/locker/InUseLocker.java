@@ -35,6 +35,11 @@ public class InUseLocker extends Locker {
         this.endDate = endDate;
     }
 
+    public InUseLocker() {
+
+    }
+
+
     @JsonGetter("student")
     public Student getStudent() {
         return student;
@@ -80,7 +85,7 @@ public class InUseLocker extends Locker {
 
     @Override
     public String toString() {
-        return super.toString() + "\n" + " Name: " + student.getName().getName()
+        return super.toString() + "\n      " + "Name: " + student.getName().getName()
                 + " StudentID:" + student.getMatricNumber().getStudentCourse();
     }
 

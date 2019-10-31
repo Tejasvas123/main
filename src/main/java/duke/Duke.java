@@ -7,6 +7,8 @@ import duke.parser.Parser;
 import duke.storage.FileHandling;
 import duke.ui.Ui;
 
+import java.io.IOException;
+
 public class Duke {
     private Ui ui;
     private FileHandling storage;
@@ -23,7 +25,7 @@ public class Duke {
             parser = new Parser();
             storage = new FileHandling(filename);
             lockers = new LockerList(storage.retrieveData().getAllLockers());
-        } catch (DukeException e) {
+        } catch (DukeException | IOException e) {
             ui.showLoadingError(e.getMessage());
             lockers = new LockerList();
         }

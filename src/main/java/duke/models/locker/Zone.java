@@ -29,6 +29,10 @@ public class Zone {
         this.zone = zone;
     }
 
+    public Zone() {
+
+    }
+
     public static boolean checkIsValidZone(String zone) {
         return zone.matches(CHECK_REGEX) && zone.length() == 1;
     }

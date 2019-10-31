@@ -31,6 +31,10 @@ public class Student {
         this.major = major;
     }
 
+    public Student() {
+
+    }
+
     @JsonGetter("studentName")
     public Name getName() {
         return name;
@@ -56,7 +60,7 @@ public class Student {
         return email;
     }
 
-    @JsonSetter("studnetEmail")
+    @JsonSetter("studentEmail")
     public void setEmail(Email email) {
         this.email = email;
     }

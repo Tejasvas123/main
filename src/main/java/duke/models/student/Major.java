@@ -28,6 +28,10 @@ public class Major {
         this.course = course;
     }
 
+    public Major() {
+
+    }
+
     @JsonGetter("major")
     public String getCourse() {
         return course;

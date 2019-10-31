@@ -28,6 +28,10 @@ public class SerialNumber {
         this.serialNumberForLocker = serialNumber;
     }
 
+    public SerialNumber() {
+
+    }
+
     public static boolean checkIsValidSerialNumber(String serialNumberForLocker) {
         return serialNumberForLocker.matches(CHECK_REGEX)
                 && serialNumberForLocker.length() <= 6;

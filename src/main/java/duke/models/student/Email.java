@@ -35,6 +35,10 @@ public class Email {
         this.email = email;
     }
 
+    public Email() {
+
+    }
+
     public static boolean checkIsValidEmail(String email) {
         return email.matches(VALID_REGEX);
     }

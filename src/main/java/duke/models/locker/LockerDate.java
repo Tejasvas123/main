@@ -35,6 +35,10 @@ public class LockerDate {
         this.date = date;
     }
 
+    public LockerDate() {
+
+    }
+
     /**
      * This function is used to check whether the date is in correct format or not.
      * @param date stores the date that is to be tested for its validity.

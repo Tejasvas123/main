@@ -1,10 +1,11 @@
 package duke.models.locker;
 
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
-import duke.models.student.Student;
+;
 import duke.models.tag.Tag;
 
 
@@ -27,9 +28,7 @@ public class Locker {
      * @param tag          instance of the class Tag that stores the status of the locker
      */
 
-    public Locker(SerialNumber serialNumber,
-                  Address address,
-                  Zone zone,
+    public Locker(SerialNumber serialNumber, Address address, Zone zone,
                   Tag tag) {
         requireNonNull(serialNumber);
         requireNonNull(address);
@@ -39,6 +38,9 @@ public class Locker {
         this.address = address;
         this.zone = zone;
         this.tag = tag;
+    }
+    public Locker() {
+
     }
 
     public void setTagAs(String tagName) {
@@ -84,7 +86,7 @@ public class Locker {
      * @return a string in a format that can be used for printing out the current locker
      */
     public String toString() {
-        return "Locker #" + serialNumber.getSerialNumberForLocker() + ": " + "Area: " + address.getAddress()
+        return " Locker #" + serialNumber.getSerialNumberForLocker() + ": " + "Area: " + address.getAddress()
                 + " Zone: " + zone.getZone()
                 + " [" + getTag().tagName + "]";
     }
