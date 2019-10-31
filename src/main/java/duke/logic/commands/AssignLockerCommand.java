@@ -83,8 +83,8 @@ public class AssignLockerCommand extends Command {
 
     private Locker getFreeLocker(LockerList lockerList, Ui ui) throws DukeException {
         for (Zone zone: preferences) {
-            List<Locker> freeLockersInZone = lockerList.getMatchingLockers
-                    (findLockerBasedOnPreferences(zone));
+            List<Locker> freeLockersInZone = lockerList.getMatchingLockers(
+                    findLockerBasedOnPreferences(zone));
             if (freeLockersInZone.size() > 0) {
                 return freeLockersInZone.get(FIRST_FREE_LOCKER);
             }

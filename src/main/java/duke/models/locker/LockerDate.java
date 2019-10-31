@@ -50,6 +50,13 @@ public class LockerDate {
         return date;
     }
 
+    /**
+     * This function is used to check if the there is a difference of at least 7 days
+     * between the two dates.
+     * @param startDate the starting date of locker subscription
+     * @param endDate the end date of locker subscription
+     * @return true if the difference is valid, false otherwise
+     */
     public static boolean isDifferenceBetweenDatesValid(String startDate,String endDate) {
         LocalDate localStartDate = LocalDate.parse(startDate,checkDateFormat);
         LocalDate localEndDate = LocalDate.parse(endDate,checkDateFormat);

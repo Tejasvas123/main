@@ -182,6 +182,12 @@ public class ParserCheck {
         return getPreferences;
     }
 
+    /**
+     * checks if the status of the locker is in the correct format.
+     * @param status stores the status to be checked
+     * @return an instance of a valid Tag
+     * @throws DukeException when the format is invalid.
+     */
     public static Tag parseStatus(String status) throws DukeException {
         requireNonNull(status);
         if (!Tag.checkValidTagName(status)) {
@@ -190,12 +196,18 @@ public class ParserCheck {
         return new Tag(status);
     }
 
+    /**
+     * This function is used to check the difference between dates.
+     * @param startDate stores the starting date for rental
+     * @param endDate stores the ending date for rental
+     * @throws DukeException when the date is invalid format
+     */
     public static void parseDifferenceBetweenStartAndEndDate(LockerDate startDate,
                                                              LockerDate endDate) throws DukeException {
         if (!LockerDate.isDifferenceBetweenDatesValid(startDate.getDate(),
                 endDate.getDate())) {
-            throw new DukeException(" There should be a difference of at least 7 days " +
-                    "and at most 365 days between the starting and ending dates of lockers");
+            throw new DukeException(" There should be a difference of at least 7 days "
+                   + "and at most 365 days between the starting and ending dates of lockers");
         }
     }
 }

@@ -2,8 +2,15 @@ package duke.logic.commands;
 
 import duke.exceptions.DukeException;
 import duke.models.LockerList;
-import duke.models.locker.*;
-import duke.models.student.*;
+import duke.models.locker.InUseLocker;
+import duke.models.locker.Locker;
+import duke.models.locker.LockerDate;
+import duke.models.locker.SerialNumber;
+import duke.models.student.Email;
+import duke.models.student.Major;
+import duke.models.student.MatricNumber;
+import duke.models.student.Name;
+import duke.models.student.Student;
 import duke.models.tag.Tag;
 import duke.parser.ParserCheck;
 import duke.storage.FileHandling;
@@ -19,6 +26,12 @@ public class EditUsageCommand extends Command {
     private final EditStudent editStudent;
     private final EditLockerDate editDate;
 
+    /**
+     * This constructor instantiates the edit usage command.
+     * @param serialNumber stores the serial number of the locker to edit
+     * @param editStudent stores the details of the student to be edited
+     * @param editDate stores the details of the dates to be edited for usage
+     */
     public EditUsageCommand(SerialNumber serialNumber,EditStudent editStudent,
                             EditLockerDate editDate) {
         requireNonNull(serialNumber);
@@ -28,6 +41,7 @@ public class EditUsageCommand extends Command {
         this.editStudent = new EditStudent(editStudent);
         this.editDate = new EditLockerDate(editDate);
     }
+
     @Override
     public void execute(LockerList lockerList, Ui ui, FileHandling storage) throws DukeException {
         Locker editedLocker = editUsageDetails(lockerList);
@@ -41,7 +55,7 @@ public class EditUsageCommand extends Command {
         int storeIndex = lockerList.getIndexOfLocker(lockerToEdit);
         Tag tag = new Tag(Tag.IN_USE);
         if (!lockerToEdit.getTag().equals(tag)) {
-           throw new DukeException(" You are allowed to edit usage of only type In-Use Locker");
+            throw new DukeException(" You are allowed to edit usage of only type In-Use Locker");
         }
         Locker editedLocker = getEditedLocker((InUseLocker)lockerToEdit);
         lockerList.addLockerInPosition(editedLocker,storeIndex);
@@ -65,10 +79,10 @@ public class EditUsageCommand extends Command {
                 .orElse(lockerToEdit.getStudent().getName());
         Major editedMajor = editStudent.getMajor()
                 .orElse(lockerToEdit.getStudent().getMajor());
-        Email editedEmail = editStudent.getEmail().
-                orElse(lockerToEdit.getStudent().getEmail());
-        MatricNumber editedMatricNumber = editStudent.getMatricNumber().
-                orElse(lockerToEdit.getStudent().getMatricNumber());
+        Email editedEmail = editStudent.getEmail()
+                .orElse(lockerToEdit.getStudent().getEmail());
+        MatricNumber editedMatricNumber = editStudent.getMatricNumber()
+                .orElse(lockerToEdit.getStudent().getMatricNumber());
 
         return new Student(editedName,editedMatricNumber,editedEmail,editedMajor);
     }
@@ -92,8 +106,14 @@ public class EditUsageCommand extends Command {
         private MatricNumber matricNumber;
         private Major major;
 
-        public EditStudent() {}
+        public EditStudent() {
 
+        }
+
+        /**
+         * This is a copy constructor used for editing student details.
+         * @param copyStudent stores the fields that are to be edited
+         */
         public EditStudent(EditStudent copyStudent) {
             setName(copyStudent.name);
             setMatricNumber(copyStudent.matricNumber);
@@ -143,8 +163,14 @@ public class EditUsageCommand extends Command {
         private LockerDate startDate;
         private LockerDate endDate;
 
-        public EditLockerDate() {}
+        public EditLockerDate() {
 
+        }
+
+        /**
+         * A copy constructor to store the details of the edited usage.
+         * @param copyEditDate stores the details that are to be edited
+         */
         public EditLockerDate(EditLockerDate copyEditDate) {
             setStartDate(copyEditDate.startDate);
             setEndDate(copyEditDate.endDate);

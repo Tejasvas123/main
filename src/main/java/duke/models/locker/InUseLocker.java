@@ -51,7 +51,7 @@ public class InUseLocker extends Locker {
             return true;
         }
 
-        if (!(other instanceof InUseLocker)){
+        if (!(other instanceof InUseLocker)) {
             return false;
         }
 

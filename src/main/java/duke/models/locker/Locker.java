@@ -61,12 +61,17 @@ public class Locker {
         tag.tagName = Tag.IN_USE;
     }
 
+    /**
+     * checks if the locker is already present in the lockerList.
+     * @param other to check if the object is already present
+     * @return true if the object is present, false otherwise
+     */
     public boolean isPresent(Object other) {
         if (other == this) {
             return true;
         }
 
-        if (!(other instanceof Locker)){
+        if (!(other instanceof Locker)) {
             return false;
         }
 

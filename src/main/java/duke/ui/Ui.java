@@ -102,6 +102,10 @@ public class Ui {
         printDash();
     }
 
+    /**
+     * prints the message for successful editing of lockers.
+     * @param editedLocker stores the data of the edited locker
+     */
     public void showSuccessfullyEdited(String editedLocker) {
         printSpaces(" I have successfully edited the locker properties.");
         printSpaces(" " + editedLocker);
@@ -109,9 +113,10 @@ public class Ui {
     }
 
     public void showNoAvailableLockers() {
-        printSpaces( " There are no available lockers at the moment. ");
+        printSpaces(" There are no available lockers at the moment. ");
         printSpaces(" Unfortunately I will have to terminate the subscription of the student");
     }
+
     /**
      * This function tells the user that Duke has snoozed/postponed/rescheduled the task.
      * @param taskA stores the task that is to be added to the list.

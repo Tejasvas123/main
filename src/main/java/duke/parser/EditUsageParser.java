@@ -30,8 +30,6 @@ public class EditUsageParser {
         MapTokensToArguments mapTokensToArguments = ParserTokenizer
                 .tokenize(userInput,TOKEN_STUDENT_NAME,TOKEN_STUDENTID,TOKEN_EMAIL,
                         TOKEN_STUDENT_COURSE,TOKEN_START_DATE,TOKEN_END_DATE);
-        SerialNumber serialNumber = ParserCheck.parseSerialNumber(mapTokensToArguments
-                .getTextBeforeFirstToken());
         EditStudent editStudent = new EditStudent();
         EditLockerDate editDate = new EditLockerDate();
         getParametersForStudent(editStudent, mapTokensToArguments);
@@ -39,6 +37,8 @@ public class EditUsageParser {
         if (!(editDate.checkAnyFieldUpdated() || editStudent.checkAnyFieldUpdated())) {
             throw new DukeException(" At least one field must be provided while updating usage");
         }
+        SerialNumber serialNumber = ParserCheck.parseSerialNumber(mapTokensToArguments
+                .getTextBeforeFirstToken());
         return new EditUsageCommand(serialNumber,editStudent,editDate);
     }
 

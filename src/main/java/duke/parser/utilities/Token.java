@@ -31,7 +31,7 @@ public class Token {
 
     @Override
     public int hashCode() {
-        return token == null?0:token.hashCode();
+        return token == null ? 0 : token.hashCode();
     }
 }
 

@@ -3,7 +3,6 @@ package duke.models;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import duke.models.locker.Locker;
-import duke.models.locker.SerialNumber;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +28,11 @@ public class LockerList {
                 .anyMatch(locker -> locker.isPresent(newLocker));
     }
 
+    /**
+     * Used to check if the lockers are already present in the list.
+     * @param newLockers list of lockers to be checked
+     * @return true if atleast one of the locker is present
+     */
     public boolean areLockersPresent(List<Locker> newLockers) {
         requireNonNull(newLockers);
         for (Locker newLocker: newLockers) {
@@ -67,6 +71,11 @@ public class LockerList {
         return lockerList.size();
     }
 
+    /**
+     * returns all the lockers that match a given property.
+     * @param isMatching stores the predicate for matching
+     * @return list of lockers that match the given predicate
+     */
     public List<Locker> getMatchingLockers(Predicate<Locker> isMatching) {
         return lockerList.stream()
                 .filter(isMatching)

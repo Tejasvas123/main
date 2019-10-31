@@ -25,8 +25,8 @@ public class EditLockerCommand extends Command {
     private final EditLocker editLocker;
     private static final int GET_FIRST_INDEX = 0;
 
-    private static final String EDIT_LOCKER_ERROR = " The following constraints are to be satisfied" +
-            " for editing locker states:"
+    private static final String EDIT_LOCKER_ERROR = " The following constraints are to be satisfied"
+            + " for editing locker states:"
             + "\n 1. If a locker is currently not in the InUse state then its state cannot"
             + " be edited to InUse state"
             + "\n 2. A locker currently in InUse state can only be changed to broken state"
@@ -36,6 +36,11 @@ public class EditLockerCommand extends Command {
             + "\n is terminated.";
 
 
+    /**
+     * This contructor instantiates the editLockerCommand object.
+     * @param serialNumber stores the serial number of the locker to be edited.
+     * @param editLocker stores the contents that are to be edited.
+     */
     public EditLockerCommand(SerialNumber serialNumber,
                              EditLocker editLocker) {
         requireNonNull(serialNumber);
@@ -54,7 +59,6 @@ public class EditLockerCommand extends Command {
     private Locker editLockerDetails(LockerList lockerList, Ui ui) throws DukeException {
         Locker lockerToEdit = CommandCheck.getLockerToEdit(lockerList,serialNumberOfLockerToEdit);
         Locker editedLocker = createEditedLocker(lockerToEdit,editLocker);
-        int storeIndex = lockerList.getIndexOfLocker(lockerToEdit);
         if (!(editedLocker.getSerialNumber().equals(lockerToEdit.getSerialNumber()))) {
             CommandCheck.isAlreadyPresent(editedLocker.getSerialNumber(),lockerList);
         }
@@ -70,17 +74,16 @@ public class EditLockerCommand extends Command {
         if (isOfTypeInUseLocker(lockerToEdit) && !isOfTypeInUseLocker(editedLocker)) {
             assignNewLocker(lockerToEdit, lockerList, ui);
         }
-        lockerList.addLockerInPosition(editedLocker,storeIndex);
+        lockerList.addLockerInPosition(editedLocker,lockerList.getIndexOfLocker(lockerToEdit));
         return editedLocker;
     }
 
     private Locker getEditedLockerInUse(Locker editedLocker) {
         assert editedLocker instanceof InUseLocker;
-            return new InUseLocker(editedLocker.getSerialNumber(),
-                    editedLocker.getAddress(),editedLocker.getZone(),editedLocker.getTag(),
-                    ((InUseLocker) editedLocker).getStudent(),((InUseLocker) (editedLocker)).getStartDate(),
-                    ((InUseLocker) editedLocker).getEndDate());
-
+        return new InUseLocker(editedLocker.getSerialNumber(),
+                editedLocker.getAddress(),editedLocker.getZone(),editedLocker.getTag(),
+                ((InUseLocker) editedLocker).getStudent(),((InUseLocker) (editedLocker)).getStartDate(),
+                ((InUseLocker) editedLocker).getEndDate());
     }
 
     private void assignNewLocker(Locker lockerToEdit, LockerList lockerList, Ui ui) throws DukeException {
@@ -146,16 +149,21 @@ public class EditLockerCommand extends Command {
         public EditLocker() {
         }
 
+        /**
+         * A copy constructor used to copy the contents of the edited locker.
+         */
         public EditLocker(EditLocker copyEditLocker) {
             setSerialNumber(copyEditLocker.serialNumber);
             setAddress(copyEditLocker.address);
             setZone(copyEditLocker.zone);
             setCondition(copyEditLocker.tag);
         }
+
         public boolean checkAnyFieldUpdated() {
             return (serialNumber != null || address != null
                     || zone != null || tag != null);
         }
+
         public void setSerialNumber(SerialNumber serialNumber) {
             this.serialNumber = serialNumber;
         }
