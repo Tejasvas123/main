@@ -15,8 +15,8 @@ public class Syntax {
     public static final Token TOKEN_STUDENTID = new Token("i/");
     public static final Token TOKEN_EMAIL = new Token("e/");
     public static final Token TOKEN_STUDENT_COURSE = new Token("m/");
-    public static final Token TOKEN_START_DATE = new Token("t/");
-    public static final Token TOKEN_END_DATE = new Token("f/");
+    public static final Token TOKEN_START_DATE = new Token("f/");
+    public static final Token TOKEN_END_DATE = new Token("t/");
     public static final Token TOKEN_PREFERENCES = new Token("p/");
 
     //For locker condition

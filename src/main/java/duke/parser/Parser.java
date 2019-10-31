@@ -49,7 +49,7 @@ public class Parser {
         case EDIT_LOCKER_COMMAND:
             return new EditLockerCommandParser().parse(arguments);
         case EDIT_USAGE_COMMAND:
-          //  return new EditUsageParser().parse(arguments);
+            return new EditUsageParser().parse(arguments);
         case LIST_COMMAND:
             return new ListCommandParser().parse();
         case EXIT_COMMAND:
