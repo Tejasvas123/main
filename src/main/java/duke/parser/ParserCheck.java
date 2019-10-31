@@ -210,7 +210,9 @@ public class ParserCheck {
                                                              LockerDate endDate) throws DukeException {
         if (!LockerDate.isDifferenceBetweenDatesValid(startDate.getDate(),
                 endDate.getDate())) {
+
             throw new DukeException(ERROR_IN_DATE_DIFFERENCE);
+
         }
     }
 }

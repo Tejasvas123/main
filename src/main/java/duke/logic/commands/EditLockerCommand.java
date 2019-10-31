@@ -35,7 +35,6 @@ public class EditLockerCommand extends Command {
             + "\n     4. If there are no available lockers for the student, then his/hers subscription"
             + " is terminated.";
 
-
     /**
      * This contructor instantiates the editLockerCommand object.
      * @param serialNumber stores the serial number of the locker to be edited.
