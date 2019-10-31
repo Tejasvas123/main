@@ -35,6 +35,7 @@ public class MatricNumber {
     public MatricNumber() {
 
     }
+
     @JsonGetter("id")
     public String getMatricId() {
         return matricId;

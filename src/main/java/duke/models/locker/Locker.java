@@ -1,11 +1,10 @@
 package duke.models.locker;
 
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
-;
+
 import duke.models.tag.Tag;
 
 
@@ -39,6 +38,7 @@ public class Locker {
         this.zone = zone;
         this.tag = tag;
     }
+
     public Locker() {
 
     }
