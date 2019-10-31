@@ -24,7 +24,7 @@ public class FileHandling {
      * @return a list that stores the tasks loaded from the file.
      * @throws DukeException when there are errors while handling the file.
      */
-    public LockerList retrieveData() throws DukeException, IOException {
+    public LockerList retrieveData() throws DukeException {
 
         try {
             FileInputStream readFile = new FileInputStream(this.file);
@@ -35,6 +35,8 @@ public class FileHandling {
         } catch (FileNotFoundException e) {
             throw new DukeException(" Could not find the file. Invalid file name/file path... "
                     + "Will continue with an empty list");
+        } catch (IOException e) {
+            throw new DukeException(" Unable to read file. Will start with an empty list");
         }
     }
 
