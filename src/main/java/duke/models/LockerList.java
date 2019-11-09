@@ -16,6 +16,12 @@ import static java.util.Objects.requireNonNull;
 
 public class LockerList {
 
+    private static final String NO_LOCKER_FOUND = " There are no lockers associated to "
+            + "the serial number entered";
+    public static final String DUPLICATE_LOCKERS_FOUND = " Duplicate entries not allowed. "
+            + "Serial number for every locker should be unique";
+    private static final int EMPTY_LIST = 0;
+
     private List<Locker> lockerList;
 
     public LockerList(List<Locker> lockerList) {
@@ -28,6 +34,7 @@ public class LockerList {
     }
 
     public boolean isPresentLocker(Locker newLocker) {
+        requireNonNull(newLocker);
         return lockerList.stream()
                 .anyMatch(locker -> locker.hasSameSerialNumber(newLocker));
     }
@@ -53,6 +60,7 @@ public class LockerList {
      * @return list of lockers that match the given predicate
      */
     public List<Locker> getMatchingLockers(Predicate<Locker> isMatching) {
+        requireNonNull(isMatching);
         return lockerList.stream()
                 .filter(isMatching)
                 .collect(Collectors.toList());
@@ -64,6 +72,7 @@ public class LockerList {
      * @return list of available lockers
      */
     public List<Locker> getAnyAvailableLocker(Tag availableTag) {
+        requireNonNull(availableTag);
         return lockerList.stream()
                 .filter(locker -> locker.getTag().equals(availableTag))
                 .collect(Collectors.toList());
@@ -71,37 +80,43 @@ public class LockerList {
 
     /**
      * returns a locker that is associated with the serialNumber.
-     * @param serialNumber stores the serial number
+     * @param serialNumberToFind stores the serial number
      * @return locker with the given serial number
      * @throws DukeException if there are no lockers associated with the serial number
      */
-    public Locker getLockerToEdit(SerialNumber serialNumber) throws DukeException {
+    public Locker getLockerToEdit(SerialNumber serialNumberToFind) throws DukeException {
+        requireNonNull(serialNumberToFind);
         List<Locker> checkAllLockers = lockerList.stream()
-                .filter(locker -> locker.getSerialNumber().equals(serialNumber))
+                .filter(locker -> locker.getSerialNumber().equals(serialNumberToFind))
                 .collect(Collectors.toList());
-        if (checkAllLockers.size() == 0) {
-            throw new DukeException(" There are no lockers associated to the serial number entered");
+        if (checkAllLockers.size() == EMPTY_LIST) {
+            throw new DukeException(NO_LOCKER_FOUND);
         }
         return checkAllLockers.get(0);
     }
 
     public void addLocker(Locker locker) {
+        requireNonNull(locker);
         lockerList.add(locker);
     }
 
     public void addLockerAtPosition(Locker locker, int index) {
-        lockerList.add(index,locker);
+        requireNonNull(locker);
+        lockerList.add(index, locker);
     }
 
     public void setLockerInPosition(Locker locker, int index) {
-        lockerList.set(index,locker);
+        requireNonNull(locker);
+        lockerList.set(index, locker);
     }
 
     public void addAllLockersInList(List<Locker> lockers) {
+        requireNonNull(lockers);
         lockerList.addAll(lockers);
     }
 
     public void deleteLocker(Locker locker) {
+        requireNonNull(locker);
         lockerList.remove(locker);
     }
 
@@ -110,6 +125,7 @@ public class LockerList {
     }
 
     public int getIndexOfLocker(Locker locker) {
+        requireNonNull(locker);
         return lockerList.indexOf(locker);
     }
 
