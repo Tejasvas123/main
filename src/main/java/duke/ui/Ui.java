@@ -3,6 +3,7 @@ package duke.ui;
 import duke.models.locker.Locker;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Ui {
@@ -72,11 +73,34 @@ public class Ui {
 
     /**
      * This function tells the user that SpongeBob has added a batch of lockers to the list.
-     * @param num  stores the number of lockers that are added
+     * @param num stores the number of lockers that are added
      */
     public void printBatch(int num) {
         printSpaces(" Got it. I have added " + num + " lockers");
         printDash();
+    }
+
+    /**
+     * This function reads the stats found.
+     */
+    public void readStats() {
+        printSpaces(" Here are the stats found:");
+        printDash();
+    }
+
+    /**
+     * This function prints the stats found.
+     * @param mapZone is the Zone of the Locker.
+     * @param mapAddress is the Address of the Locker.
+     * @param mapTag is the Tag of the Locker.
+     */
+    public void printStats(Map<String, Integer> mapZone, Map<String, Integer> mapAddress, Map<String, Integer> mapTag) {
+        System.out.print("Zone: ");
+        System.out.println(mapZone);
+        System.out.print("Address: ");
+        System.out.println(mapAddress);
+        System.out.print("Tag: ");
+        System.out.println(mapTag);
     }
 
     /**

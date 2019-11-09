@@ -29,6 +29,8 @@ public class Parser {
     private static final String INVALID_FORMAT = " The command entered has invalid format. " +
             "Type help to check all the commands available in SpongeBob";
 
+    private static final String STATS_COMMAND = "stats";
+
     /**
      * this function is used to parse the command entered by the user.
      * @param fullCommand stores the command entered by the user
@@ -67,6 +69,8 @@ public class Parser {
             return new ByeCommand();
         case ExportLockerCommand.COMMAND_WORD:
             return new ExportLockerCommand();
+        case STATS_COMMAND:
+            return new StatsCommandParser().parse();
         default:
             throw new DukeException(INVALID_FORMAT);
         }
