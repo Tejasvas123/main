@@ -14,6 +14,7 @@ import java.util.List;
 public class ModelChecks {
 
     private static final String DATE_FORMAT = "dd-MM-uuuu";
+
     /**
      * checks whether all entries are valid in the lockerList.
      * @param lockerList stores the entire LockerList to be checked

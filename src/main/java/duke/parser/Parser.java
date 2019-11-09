@@ -26,8 +26,8 @@ public class Parser {
 
     private static final String COMMAND_TYPE = "commandType";
     private static final String ARGUMENTS = "arguments";
-    private static final String INVALID_FORMAT = " The command entered has invalid format. " +
-            "Type help to check all the commands available in SpongeBob";
+    private static final String INVALID_FORMAT = " The command entered has invalid format. "
+            + "Type help to check all the commands available in SpongeBob";
 
     private static final String STATS_COMMAND = "stats";
 

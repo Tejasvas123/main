@@ -33,6 +33,11 @@ public class LockerList {
         lockerList = new ArrayList<>();
     }
 
+    /**
+     * Used to check if the locker is already present in the list.
+     * @param newLocker list of lockers to be checked
+     * @return true if at least one of the locker is present
+     */
     public boolean isPresentLocker(Locker newLocker) {
         requireNonNull(newLocker);
         return lockerList.stream()
