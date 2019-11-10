@@ -25,7 +25,7 @@ public class Duke {
             ui = new Ui();
             parser = new Parser();
             storage = new StorageManager(filename);
-            lockers = new LockerList(storage.retrieveData().getAllLockers());
+            lockers = new LockerList(storage.retrieveData().getLockerList());
         } catch (DukeException e) {
             ui.showLoadingError(e.getMessage());
             lockers = new LockerList();

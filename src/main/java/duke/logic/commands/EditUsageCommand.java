@@ -8,7 +8,7 @@ import duke.models.locker.LockerDate;
 import duke.models.locker.SerialNumber;
 import duke.models.student.Email;
 import duke.models.student.Major;
-import duke.models.student.MatricNumber;
+import duke.models.student.StudentId;
 import duke.models.student.Name;
 import duke.models.student.Student;
 import duke.storage.Storage;
@@ -89,10 +89,10 @@ public class EditUsageCommand extends Command {
                 .orElse(usageToEdit.getStudent().getMajor());
         Email editedEmail = editStudent.getEmail()
                 .orElse(usageToEdit.getStudent().getEmail());
-        MatricNumber editedMatricNumber = editStudent.getMatricNumber()
-                .orElse(usageToEdit.getStudent().getMatricNumber());
+        StudentId editedStudentId = editStudent.getStudentId()
+                .orElse(usageToEdit.getStudent().getStudentId());
 
-        return new Student(editedName, editedMatricNumber, editedEmail, editedMajor);
+        return new Student(editedName, editedStudentId, editedEmail, editedMajor);
     }
 
     private LockerDate createEditedStartDate(Usage usageToEdit, EditLockerDate editDate) throws DukeException {
@@ -111,7 +111,7 @@ public class EditUsageCommand extends Command {
     public static class EditStudent {
         private Name name;
         private Email email;
-        private MatricNumber matricNumber;
+        private StudentId studentId;
         private Major major;
 
         public EditStudent() {
@@ -124,7 +124,7 @@ public class EditUsageCommand extends Command {
          */
         public EditStudent(EditStudent copyStudent) {
             setName(copyStudent.name);
-            setMatricNumber(copyStudent.matricNumber);
+            setStudentId(copyStudent.studentId);
             setEmail(copyStudent.email);
             setMajor(copyStudent.major);
         }
@@ -137,8 +137,8 @@ public class EditUsageCommand extends Command {
             this.email = email;
         }
 
-        public void setMatricNumber(MatricNumber matricNumber) {
-            this.matricNumber = matricNumber;
+        public void setStudentId(StudentId studentId) {
+            this.studentId = studentId;
         }
 
         public void setMajor(Major major) {
@@ -147,7 +147,7 @@ public class EditUsageCommand extends Command {
 
         public boolean checkAnyFieldUpdated() {
             return name != null || email != null || major != null
-                    || matricNumber != null;
+                    || studentId != null;
         }
 
         public Optional<Name> getName() {
@@ -158,8 +158,8 @@ public class EditUsageCommand extends Command {
             return Optional.ofNullable(email);
         }
 
-        public Optional<MatricNumber> getMatricNumber() {
-            return Optional.ofNullable(matricNumber);
+        public Optional<StudentId> getStudentId() {
+            return Optional.ofNullable(studentId);
         }
 
         public Optional<Major> getMajor() {

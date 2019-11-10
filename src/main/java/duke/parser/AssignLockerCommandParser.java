@@ -7,7 +7,7 @@ import duke.models.locker.Usage;
 import duke.models.locker.Zone;
 import duke.models.student.Email;
 import duke.models.student.Major;
-import duke.models.student.MatricNumber;
+import duke.models.student.StudentId;
 import duke.models.student.Name;
 import duke.models.student.Student;
 import duke.parser.utilities.MapTokensToArguments;
@@ -50,7 +50,7 @@ public class AssignLockerCommandParser {
         }
 
         Name name = ParserCheck.parseName(mapTokensToArguments.getValue(TOKEN_STUDENT_NAME).get());
-        MatricNumber matricNumber = ParserCheck.parseMatricNumber(
+        StudentId studentId = ParserCheck.parseMatricNumber(
                 mapTokensToArguments.getValue(TOKEN_STUDENTID).get());
         Email email = ParserCheck.parseEmail(mapTokensToArguments.getValue(TOKEN_EMAIL).get());
         Major major = ParserCheck.parseMajor(mapTokensToArguments.getValue(
@@ -62,7 +62,7 @@ public class AssignLockerCommandParser {
         List<Zone> getPreferences = ParserCheck.parsePreferences(mapTokensToArguments.getValue(
                 TOKEN_PREFERENCES).get());
         ParserCheck.parseDifferenceBetweenStartAndEndDate(startDate, endDate);
-        Student student = new Student(name, matricNumber, email, major);
+        Student student = new Student(name, studentId, email, major);
         Usage usage = new Usage(student, startDate, endDate);
         return new AssignLockerCommand(usage, getPreferences);
     }

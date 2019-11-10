@@ -7,7 +7,7 @@ import duke.models.locker.SerialNumber;
 import duke.models.locker.Zone;
 import duke.models.student.Email;
 import duke.models.student.Major;
-import duke.models.student.MatricNumber;
+import duke.models.student.StudentId;
 import duke.models.student.Name;
 import duke.models.tag.Tag;
 
@@ -118,12 +118,12 @@ public class ParserCheck {
      * @return a valid instance of MatricNumber
      * @throws DukeException if the matriculation number is in invalid format
      */
-    public static MatricNumber parseMatricNumber(String matricNumber) throws DukeException {
+    public static StudentId parseMatricNumber(String matricNumber) throws DukeException {
         requireNonNull(matricNumber);
-        if (!MatricNumber.checkIsValidMatricNumber(matricNumber.trim())) {
-            throw new DukeException(MatricNumber.ERROR_MESSAGE);
+        if (!StudentId.checkIsValidStudentId(matricNumber.trim())) {
+            throw new DukeException(StudentId.ERROR_MESSAGE);
         }
-        return new MatricNumber(matricNumber.trim());
+        return new StudentId(matricNumber.trim());
     }
 
     /**

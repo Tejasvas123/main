@@ -33,6 +33,6 @@ public class StorageManager implements Storage {
     @Override
     public void exportAsCsv(LockerList lockerList) throws DukeException {
         requireNonNull(lockerList);
-        writeToCsv.exportLockers(lockerList.getAllLockers());
+        writeToCsv.exportLockers(lockerList.getLockerList());
     }
 }

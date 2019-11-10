@@ -62,7 +62,7 @@ public class EditUsageParser {
         }
 
         if (mapTokens.getValue(TOKEN_STUDENTID).isPresent()) {
-            editStudent.setMatricNumber(ParserCheck.parseMatricNumber(
+            editStudent.setStudentId(ParserCheck.parseMatricNumber(
                     mapTokens.getValue(TOKEN_STUDENTID).get()));
         }
 
