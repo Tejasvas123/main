@@ -18,6 +18,9 @@ import java.util.Optional;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Command to edit the subscription details of an in-use locker.
+ */
 public class EditUsageCommand extends Command {
 
     private final SerialNumber serialNumberToEdit;
@@ -32,7 +35,7 @@ public class EditUsageCommand extends Command {
             + "only type In-Use Locker";
 
     /**
-     * This constructor instantiates the edit usage command.
+     * Instantiates the edit usage command.
      * @param serialNumber stores the serial number of the locker to edit
      * @param editStudent stores the details of the student to be edited
      * @param editDate stores the details of the dates to be edited for usage
@@ -81,6 +84,10 @@ public class EditUsageCommand extends Command {
                 lockerToEdit.getTag(),editedUsage);
     }
 
+    /**
+     * Creates and returns a {@code Student} with the details of {@code usageToEdit}
+     * edited with {@code editStudent}.
+     */
     private Student createEditedStudent(Usage usageToEdit, EditStudent editStudent) {
         assert usageToEdit != null;
         Name editedName = editStudent.getName()
@@ -95,6 +102,10 @@ public class EditUsageCommand extends Command {
         return new Student(editedName, editedStudentId, editedEmail, editedMajor);
     }
 
+    /**
+     * Creates and returns a {@code LockerDate} with the details of {@code usageToEdit}
+     * edited with {@code editLockerDate}.
+     */
     private LockerDate createEditedStartDate(Usage usageToEdit, EditLockerDate editDate) throws DukeException {
         assert usageToEdit != null;
         return new LockerDate((editDate.getStartDate()
@@ -107,7 +118,10 @@ public class EditUsageCommand extends Command {
                 .orElse(usageToEdit.getEndDate())).getDate());
     }
 
-
+    /**
+     * Stores the details to edit the student with. Each non-empty field value will replace the
+     * corresponding field value of the student.
+     */
     public static class EditStudent {
         private Name name;
         private Email email;
@@ -119,7 +133,7 @@ public class EditUsageCommand extends Command {
         }
 
         /**
-         * This is a copy constructor used for editing student details.
+         * A copy constructor used for editing student details.
          * @param copyStudent stores the fields that are to be edited
          */
         public EditStudent(EditStudent copyStudent) {
@@ -145,6 +159,9 @@ public class EditUsageCommand extends Command {
             this.major = major;
         }
 
+        /**
+         * Returns true if at least one field is updated.
+         */
         public boolean checkAnyFieldUpdated() {
             return name != null || email != null || major != null
                     || studentId != null;
@@ -167,6 +184,10 @@ public class EditUsageCommand extends Command {
         }
     }
 
+    /**
+     * Stores the details to edit the rental period with. Each non-empty field value will replace the
+     * corresponding field value of the rental period.
+     */
     public static class EditLockerDate {
         private LockerDate startDate;
         private LockerDate endDate;
@@ -184,6 +205,9 @@ public class EditUsageCommand extends Command {
             setEndDate(copyEditDate.endDate);
         }
 
+        /**
+         * Returns true if at least one field is updated.
+         */
         public boolean checkAnyFieldUpdated() {
             return startDate != null || endDate != null;
         }

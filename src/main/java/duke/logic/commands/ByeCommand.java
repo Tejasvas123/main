@@ -4,6 +4,9 @@ import duke.models.LockerList;
 import duke.storage.Storage;
 import duke.ui.Ui;
 
+/**
+ * Command for exiting SpongeBob.
+ */
 public class ByeCommand extends Command {
     public static final String COMMAND_WORD = "bye";
 
