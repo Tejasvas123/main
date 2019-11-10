@@ -3,11 +3,15 @@ package duke;
 import duke.logic.commands.Command;
 import duke.exceptions.DukeException;
 import duke.models.LockerList;
+import duke.models.util.SampleData;
 import duke.parser.Parser;
 import duke.storage.Storage;
 import duke.storage.StorageManager;
 import duke.ui.Ui;
 
+/**
+ * Runs the application.
+ */
 public class Duke {
     private Ui ui;
     private Storage storage;
@@ -20,7 +24,7 @@ public class Duke {
      * Instantiates the SpongeBob class by loading data from a file.
      * @param filename stores the file name from which the data is being loaded.
      */
-    public Duke(String filename) {
+    public Duke(String filename) throws DukeException {
         try {
             ui = new Ui();
             parser = new Parser();
@@ -28,12 +32,12 @@ public class Duke {
             lockers = new LockerList(storage.retrieveData().getLockerList());
         } catch (DukeException e) {
             ui.showLoadingError(e.getMessage());
-            lockers = new LockerList();
+            lockers = SampleData.getSampleLockerList();
         }
     }
 
     /**
-     *  executes various tasks/commands related to SpongeBob.
+     *  Executes various tasks/commands related to SpongeBob.
      */
     public void run() {
         ui.showWelcome();
@@ -56,7 +60,7 @@ public class Duke {
      * data.json is the file from which the data is loaded for the list of lockers.
      * @param args contains the supplied command-line arguments as an array of String objects.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DukeException {
         new Duke(FILE_NAME_FOR_STORAGE).run();
     }
 }

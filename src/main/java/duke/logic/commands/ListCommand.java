@@ -5,7 +5,6 @@ import duke.models.LockerList;
 import duke.storage.Storage;
 import duke.ui.Ui;
 
-
 /**
  * Command to list all the lockers managed by SpongeBob.
  */

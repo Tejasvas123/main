@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import duke.exceptions.DukeException;
 import duke.models.LockerList;
-import duke.models.ModelChecks;
+import duke.models.util.ModelChecks;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,9 +19,9 @@ public class FileStorage {
     private final String fileName;
 
     private static final String FILE_NOT_FOUND = " Could not find the file. Invalid file name/file path... "
-            + "Will continue with an empty list";
-    private static final String ERROR_READING_FILE = " Unable to read file. Will start with an empty list";
-    private static final String CORRUPTED_FILE = " Corrupted file. Will continue with an empty list";
+            + "Will continue with the default list";
+    private static final String ERROR_READING_FILE = " Unable to read file. Will start with the default list";
+    private static final String CORRUPTED_FILE = " Corrupted file. Will continue with default list";
     private static final String ERROR_WRITING_FILE = " Error occurred while writing data to the file";
 
     public FileStorage(String fileName) {

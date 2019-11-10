@@ -11,7 +11,7 @@ import static java.util.Objects.requireNonNull;
  * Stores the status of a locker.
  */
 public class Tag {
-    private String tagName;
+    public String tagName;
 
     public static final String IN_USE = "in-use";
     public static final String NOT_IN_USE = "not-in-use";
@@ -57,6 +57,7 @@ public class Tag {
     public String getTagName() {
         return tagName;
     }
+
 
     /* Need to override function equals() and hashCode() in order to account
        for user defined checks for equality while using streams

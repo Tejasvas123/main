@@ -1,6 +1,7 @@
-package duke.models;
+package duke.models.util;
 
 import duke.exceptions.DukeException;
+import duke.models.LockerList;
 import duke.models.locker.Locker;
 import duke.models.locker.LockerDate;
 import duke.models.locker.Usage;
