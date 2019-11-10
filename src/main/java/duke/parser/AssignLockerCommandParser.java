@@ -25,10 +25,13 @@ import static duke.parser.utilities.Syntax.TOKEN_STUDENTID;
 import static duke.parser.utilities.Syntax.TOKEN_STUDENT_COURSE;
 import static duke.parser.utilities.Syntax.TOKEN_STUDENT_NAME;
 
+/**
+ * Parses user input and creates a new AssignLockerCommand object.
+ */
 public class AssignLockerCommandParser {
 
     /**
-     * This function is used to check if all the entries entered by the user are valid as per
+     * Checks if all the entries entered by the user are valid as per
      * the specifications of the assign command.
      * @param userInput stores the userInput
      * @return a reference to the AssignLockerCommand()
@@ -64,6 +67,9 @@ public class AssignLockerCommandParser {
         return new AssignLockerCommand(usage, getPreferences);
     }
 
+    /**
+     * Returns true if there are no tokens with empty values.
+     */
     private static boolean checkAllTokensPresent(
             MapTokensToArguments mapTokensToArguments, Token... tokens) {
         return Stream.of(tokens).allMatch(token -> mapTokensToArguments

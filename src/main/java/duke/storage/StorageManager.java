@@ -6,6 +6,9 @@ import duke.models.LockerList;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Manages storage of SpongeBob data in local storage and exports data to Csv files.
+ */
 public class StorageManager implements Storage {
 
     private FileStorage fileStorage;
