@@ -47,7 +47,7 @@ public class Parser {
             + "Type help to check all the commands available in SpongeBob";
     private static final String STATS_COMMAND = "stats";
     private static final Logger logger = Log.getLogger();
-    private static final String PARSING = "Parsing";
+    private static final String PARSING = "Parsing ";
 
     /**
      * Parses the command entered by the user.
