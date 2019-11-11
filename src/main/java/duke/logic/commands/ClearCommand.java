@@ -5,6 +5,9 @@ import duke.models.LockerList;
 import duke.storage.Storage;
 import duke.ui.Ui;
 
+/**
+ * Command to clear all the lockers from the list of lockers.
+ */
 public class ClearCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
