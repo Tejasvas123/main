@@ -18,6 +18,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class AddBatchCommand extends Command {
 
+    private static final String LOG_FOR_ADDING_BATCH_COMMAND = " Executing command for adding batch of lockers";
     private final List<Locker> batchOfLockers;
     private static final Logger logger = Log.getLogger();
 
@@ -37,7 +38,7 @@ public class AddBatchCommand extends Command {
 
     @Override
     public void execute(LockerList lockerList, Ui ui, Storage storage) throws DukeException {
-        logger.log(Level.INFO, " Executing command for adding batch of lockers");
+        logger.log(Level.INFO, LOG_FOR_ADDING_BATCH_COMMAND);
         if (lockerList.areLockersPresent(batchOfLockers)) {
             throw new DukeException(LockerList.DUPLICATE_LOCKERS_FOUND);
         }

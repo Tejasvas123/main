@@ -17,19 +17,21 @@ import java.util.logging.Logger;
  * Runs the application.
  */
 public class Duke {
+    private static final String STARTING_SPONGE_BOB = " Starting SpongeBob";
+    private static final String FILE_NAME_FOR_STORAGE = "data.json";
+
     private Ui ui;
     private Storage storage;
     private LockerList lockers;
     private Parser parser;
     private static Logger logger = Log.getLogger();
 
-    private static final String FILE_NAME_FOR_STORAGE = "data.json";
 
     /**
      * Instantiates the SpongeBob class by loading data from a file.
      * @param filename stores the file name from which the data is being loaded.
      */
-    public Duke(String filename) throws DukeException {
+    private Duke(String filename) throws DukeException {
         try {
             ui = new Ui();
             parser = new Parser();
@@ -45,7 +47,7 @@ public class Duke {
     /**
      *  Executes various tasks/commands related to SpongeBob.
      */
-    public void run() {
+    private void run() {
         ui.showWelcome();
         boolean isExit = false;
         while (!isExit) {
@@ -68,7 +70,7 @@ public class Duke {
      * @param args contains the supplied command-line arguments as an array of String objects.
      */
     public static void main(String[] args) throws DukeException {
-        logger.log(Level.INFO, " Starting SpongeBob");
+        logger.log(Level.INFO, STARTING_SPONGE_BOB);
         new Duke(FILE_NAME_FOR_STORAGE).run();
     }
 }

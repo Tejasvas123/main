@@ -33,6 +33,7 @@ import static duke.parser.utilities.Syntax.TOKEN_STUDENT_NAME;
  */
 public class AssignLockerCommandParser {
     private static final Logger logger = Log.getLogger();
+    private static final String LOG_ASSIGN_LOCKER_COMMAND = "Attempting to parse user input for AssignLockerCommand";
 
     /**
      * Checks if all the entries entered by the user are valid as per
@@ -42,7 +43,7 @@ public class AssignLockerCommandParser {
      * @throws DukeException when the command is in invalid format
      */
     public AssignLockerCommand parse(String userInput) throws DukeException {
-        logger.log(Level.INFO, "Attempting to parse user input for AssignLockerCommand");
+        logger.log(Level.INFO, LOG_ASSIGN_LOCKER_COMMAND);
         MapTokensToArguments mapTokensToArguments = ParserTokenizer
                 .tokenize(userInput, TOKEN_STUDENT_NAME, TOKEN_STUDENTID, TOKEN_EMAIL,
                         TOKEN_STUDENT_COURSE, TOKEN_START_DATE, TOKEN_END_DATE, TOKEN_PREFERENCES);

@@ -19,7 +19,6 @@ import java.util.logging.Logger;
  * Saves and loads data from a json file named as <code> fileName</code>.
  */
 public class FileStorage {
-    private final String fileName;
 
     private static final String FILE_NOT_FOUND = " Could not find the file. Invalid file name/file path... "
             + "Will continue with the default list";
@@ -27,6 +26,8 @@ public class FileStorage {
     private static final String CORRUPTED_FILE = " Corrupted file. Will continue with default list";
     private static final String ERROR_WRITING_FILE = " Error occurred while writing data to the file";
     private static final Logger logger = Log.getLogger();
+
+    private final String fileName;
 
     public FileStorage(String fileName) {
         this.fileName = fileName;

@@ -30,6 +30,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class AddBatchCommandParser {
     private static final Logger logger = Log.getLogger();
+    private static final String LOG_ADD_BATCH_COMMAND_PARSER = " Attempting to parse input for AddBatchCommand";
 
     /**
      * Parse the user input for adding batches (multiple) of lockers to the list of lockers.
@@ -39,7 +40,7 @@ public class AddBatchCommandParser {
      * @throws DukeException when the command syntax/format is invalid
      */
     public AddBatchCommand parse(String userInput) throws DukeException {
-        logger.log(Level.INFO, " Attempting to parse input for AddBatchCommand");
+        logger.log(Level.INFO, LOG_ADD_BATCH_COMMAND_PARSER);
 
         MapTokensToArguments mapTokensToArguments = ParserTokenizer
                 .tokenize(userInput, TOKEN_SIZE, TOKEN_SERIAL, TOKEN_ADDRESS, TOKEN_ZONE);

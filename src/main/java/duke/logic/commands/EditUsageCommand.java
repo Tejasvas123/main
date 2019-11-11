@@ -29,6 +29,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class EditUsageCommand extends Command {
 
+    private static final String LOG_FOR_EDITING_USAGE = " Executing command for editing subscription details of lockers";
     private final SerialNumber serialNumberToEdit;
     private final EditStudent editStudent;
     private final EditLockerDate editDate;
@@ -60,7 +61,7 @@ public class EditUsageCommand extends Command {
 
     @Override
     public void execute(LockerList lockerList, Ui ui, Storage storage) throws DukeException {
-        logger.log(Level.INFO, " Executing command for editing subscription details of lockers");
+        logger.log(Level.INFO, LOG_FOR_EDITING_USAGE);
         Locker editedLocker = editUsageDetails(lockerList);
         ui.showSuccessfullyEdited(editedLocker.toString());
         storage.saveData(lockerList);

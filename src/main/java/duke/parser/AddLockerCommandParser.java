@@ -27,6 +27,7 @@ import static duke.parser.utilities.Syntax.TOKEN_ZONE;
  */
 public class AddLockerCommandParser {
     private static final Logger logger = Log.getLogger();
+    private static final String LOG_ADD_LOCKER_PARSER = "Attempting to parse user input for AddLockerCommand";
 
     /**
      * Parses the user input for adding a new locker to the list of lockers.
@@ -36,7 +37,7 @@ public class AddLockerCommandParser {
      * @throws DukeException when the command format is invalid
      */
     public AddLockerCommand parse(String userInput) throws DukeException {
-        logger.log(Level.INFO, "Attempting to parse user input for AddLockerCommand");
+        logger.log(Level.INFO, LOG_ADD_LOCKER_PARSER);
         MapTokensToArguments mapTokensToArguments =
                 ParserTokenizer.tokenize(userInput, TOKEN_SERIAL, TOKEN_ADDRESS, TOKEN_ZONE);
         if (!checkAllTokensPresent(mapTokensToArguments,

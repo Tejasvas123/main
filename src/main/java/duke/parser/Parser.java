@@ -47,6 +47,7 @@ public class Parser {
             + "Type help to check all the commands available in SpongeBob";
     private static final String STATS_COMMAND = "stats";
     private static final Logger logger = Log.getLogger();
+    private static final String PARSING = "Parsing";
 
     /**
      * Parses the command entered by the user.
@@ -55,7 +56,7 @@ public class Parser {
      * @throws DukeException if the user inputs invalid command i.e in a an unexpected format
      */
     public Command parse(String fullCommand) throws DukeException {
-        logger.log(Level.INFO, "Parsing" + fullCommand);
+        logger.log(Level.INFO, PARSING + fullCommand);
         requireNonNull(fullCommand);
 
         Matcher commandMatch = GENERAL_COMMAND_FORMAT.matcher(fullCommand.trim());

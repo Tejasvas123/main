@@ -22,6 +22,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class EditLockerCommandParser {
     private static final Logger logger = Log.getLogger();
+    private static final String LOG_PARSER_FOR_EDIT_LOCKER = "Attempting to parse user input for EditLockerCommand";
 
     /**
      * Parses the user input for editing the various fields associated with a locker.
@@ -30,7 +31,7 @@ public class EditLockerCommandParser {
      * @throws DukeException when the user input is invalid
      */
     public EditLockerCommand parse(String userInput) throws DukeException {
-        logger.log(Level.INFO, "Attempting to parse user input for EditLockerCommand");
+        logger.log(Level.INFO, LOG_PARSER_FOR_EDIT_LOCKER);
         requireNonNull(userInput);
         MapTokensToArguments mapTokensToArguments = ParserTokenizer
                 .tokenize(userInput, TOKEN_SERIAL, TOKEN_ADDRESS, TOKEN_ZONE,

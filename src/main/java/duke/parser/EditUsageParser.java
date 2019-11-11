@@ -25,6 +25,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class EditUsageParser {
     private static final Logger logger = Log.getLogger();
+    private static final String LOG_PARSE_FOR_EDIT_USAGE = "Attempting to parse user input for EditUsageCommand";
 
     /**
      * Parses the user input for editing the subscription details of a in-use locker.
@@ -33,7 +34,7 @@ public class EditUsageParser {
      * @throws DukeException when the user input is invalid
      */
     public EditUsageCommand parse(String userInput) throws DukeException {
-        logger.log(Level.INFO, "Attempting to parse user input for EditUsageCommand");
+        logger.log(Level.INFO, LOG_PARSE_FOR_EDIT_USAGE);
         requireNonNull(userInput);
         MapTokensToArguments mapTokensToArguments = ParserTokenizer
                 .tokenize(userInput, TOKEN_STUDENT_NAME, TOKEN_STUDENTID, TOKEN_EMAIL,

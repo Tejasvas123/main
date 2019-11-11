@@ -18,6 +18,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class DeleteLockerCommand extends Command {
 
+    private static final String LOG_FOR_DELETE_LOCKER = " Executing command for deleting a locker";
     private final SerialNumber serialNumberToDelete;
     public static final String COMMAND_WORD = "deletelocker";
     public static final String INVALID_FORMAT = " Invalid command format for deleting lockers."
@@ -34,7 +35,7 @@ public class DeleteLockerCommand extends Command {
 
     @Override
     public void execute(LockerList lockerList, Ui ui, Storage storage) throws DukeException {
-        logger.log(Level.INFO, " Executing command for deleting a locker");
+        logger.log(Level.INFO, LOG_FOR_DELETE_LOCKER);
         Locker lockerToDelete = lockerList.getLockerToEdit(serialNumberToDelete);
         lockerList.deleteLocker(lockerToDelete);
         ui.deleteMessage(lockerList.numLockers(), lockerToDelete.toString());

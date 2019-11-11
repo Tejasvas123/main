@@ -17,6 +17,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class AddLockerCommand extends Command {
 
+    private static final String LOG_ADDING_LOCKER_COMMAND = " Executing command for adding a locker";
     private final Locker addLocker;
     public static final String COMMAND_WORD = "addlocker";
     public static final String INVALID_FORMAT = " Invalid command format for adding a locker."
@@ -34,7 +35,7 @@ public class AddLockerCommand extends Command {
 
     @Override
     public void execute(LockerList lockerList, Ui ui, Storage storage) throws DukeException {
-        logger.log(Level.INFO, " Executing command for adding a locker");
+        logger.log(Level.INFO, LOG_ADDING_LOCKER_COMMAND);
         if (lockerList.isPresentLocker(addLocker)) {
             throw new DukeException(LockerList.DUPLICATE_LOCKERS_FOUND);
         }

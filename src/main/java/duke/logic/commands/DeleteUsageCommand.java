@@ -19,6 +19,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class DeleteUsageCommand extends Command {
 
+    private static final String LOG_FOR_DELETE_USAGE = " Executing command for deleting subscription of lockers";
     private final SerialNumber serialNumberToDeleteUsage;
     public static final String COMMAND_WORD = "deleteusage";
     public static final String INVALID_FORMAT = " Invalid command format for deleting usage. "
@@ -37,7 +38,7 @@ public class DeleteUsageCommand extends Command {
 
     @Override
     public void execute(LockerList lockerList, Ui ui, Storage storage) throws DukeException {
-        logger.log(Level.INFO, " Executing command for deleting subscription of lockers");
+        logger.log(Level.INFO, LOG_FOR_DELETE_USAGE);
         Locker lockerToDelete = lockerList.getLockerToEdit(serialNumberToDeleteUsage);
         if (!(lockerToDelete.isOfTypeInUse())) {
             throw new DukeException(USAGE_CONSTRAINT);

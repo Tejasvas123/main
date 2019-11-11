@@ -26,6 +26,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class EditLockerCommand extends Command {
 
+    private static final String LOG_FOR_EDITING_LOCKER = " Executing command for editing locker details";
     private final SerialNumber serialNumberOfLockerToEdit;
     private final EditLocker editLocker;
     private static final int GET_FIRST_INDEX = 0;
@@ -59,7 +60,7 @@ public class EditLockerCommand extends Command {
 
     @Override
     public void execute(LockerList lockerList, Ui ui, Storage storage) throws DukeException {
-        logger.log(Level.INFO, " Executing command for editing locker details");
+        logger.log(Level.INFO, LOG_FOR_EDITING_LOCKER);
         Locker editedLocker = editLockerDetails(lockerList, ui);
         ui.showSuccessfullyEdited(editedLocker.toString());
         storage.saveData(lockerList);

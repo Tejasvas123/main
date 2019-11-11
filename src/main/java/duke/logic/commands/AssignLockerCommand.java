@@ -22,9 +22,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class AssignLockerCommand extends Command {
 
-    private final Usage usage;
-    private final List<Zone> preferences;
-
+    private static final String LOG_FOR_ASSIGN_LOCKER = " Executing command for assigning locker to the student";
     private static final int FIRST_FREE_LOCKER = 0;
     public static final String COMMAND_WORD = "assign";
     public static final String INVALID_FORMAT =  " Invalid command format for assigning lockers."
@@ -32,6 +30,8 @@ public class AssignLockerCommand extends Command {
             + "\n     2.There should not include any text between the command word and the first token";
     private static final String NO_AVAILABLE_LOCKERS = " There are no available lockers at the moment.";
     private static final Logger logger = Log.getLogger();
+    private final Usage usage;
+    private final List<Zone> preferences;
 
     /**
      * Instantiates all the fields necessary for assigning a locker to a student.
@@ -47,7 +47,7 @@ public class AssignLockerCommand extends Command {
 
     @Override
     public void execute(LockerList lockerList, Ui ui, Storage storage) throws DukeException {
-        logger.log(Level.INFO, " Executing command for assigning locker to the student");
+        logger.log(Level.INFO, LOG_FOR_ASSIGN_LOCKER);
         int storeIndex = assignLockerToStudent(lockerList, ui);
         ui.printSuccessfulAllocation(lockerList.getLocker(storeIndex).toString());
         storage.saveData(lockerList);

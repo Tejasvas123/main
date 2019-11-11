@@ -15,6 +15,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class DeleteLockerCommandParser {
     private static final Logger logger = Log.getLogger();
+    private static final String LOG_DELETE_LOCKER_COMMAND = "Attempting to parse user input for DeleteLockerCommand";
 
     /**
      * Parses the user input for deleting a locker from the list.
@@ -23,7 +24,7 @@ public class DeleteLockerCommandParser {
      * @throws DukeException when the command format is invalid
      */
     public DeleteLockerCommand parse(String args) throws DukeException {
-        logger.log(Level.INFO, "Attempting to parse user input for DeleteLockerCommand");
+        logger.log(Level.INFO, LOG_DELETE_LOCKER_COMMAND);
         requireNonNull(args);
         if (args.trim().length() == 0) {
             throw new DukeException(DeleteLockerCommand.INVALID_FORMAT);

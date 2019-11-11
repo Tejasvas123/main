@@ -16,10 +16,11 @@ public class ListCommand extends Command {
 
     public static final String COMMAND_WORD = "list";
     private static final Logger logger = Log.getLogger();
+    private static final String LOG_FOR_LIST_COMMAND = "Executing list command";
 
     @Override
     public void execute(LockerList lockerList, Ui ui, Storage storage) {
-        logger.log(Level.INFO, "Executing list command");
+        logger.log(Level.INFO, LOG_FOR_LIST_COMMAND);
         ui.printList(lockerList.getLockerList());
     }
 }

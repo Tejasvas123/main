@@ -14,10 +14,11 @@ import java.util.logging.Logger;
 public class ByeCommand extends Command {
     public static final String COMMAND_WORD = "bye";
     private static final Logger logger = Log.getLogger();
+    private static final String LOG_FOR_EXIT_COMMAND = " Executing command for exiting SpongeBob";
 
     @Override
     public void execute(LockerList lockerList, Ui ui, Storage storage) {
-        logger.log(Level.INFO, " Executing command for exiting SpongeBob");
+        logger.log(Level.INFO, LOG_FOR_EXIT_COMMAND);
         this.isExit = true;
         ui.exitSpongeBob();
     }
