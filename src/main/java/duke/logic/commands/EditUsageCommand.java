@@ -29,7 +29,8 @@ import static java.util.Objects.requireNonNull;
  */
 public class EditUsageCommand extends Command {
 
-    private static final String LOG_FOR_EDITING_USAGE = " Executing command for editing subscription details of lockers";
+    private static final String LOG_FOR_EDITING_USAGE = " Executing command for editing subscription "
+            + "details of lockers";
     private final SerialNumber serialNumberToEdit;
     private final EditStudent editStudent;
     private final EditLockerDate editDate;
