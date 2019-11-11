@@ -1,6 +1,7 @@
 package duke.logic.commands;
 
 import duke.exceptions.DukeException;
+import duke.log.Log;
 import duke.models.LockerList;
 import duke.models.locker.Usage;
 import duke.models.locker.Locker;
@@ -11,6 +12,8 @@ import duke.ui.Ui;
 
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static java.util.Objects.requireNonNull;
 
@@ -28,6 +31,7 @@ public class AssignLockerCommand extends Command {
             + "\n     1. All tokens should be present (n/ i/ m/ e/ f/ t/ p/)"
             + "\n     2.There should not include any text between the command word and the first token";
     private static final String NO_AVAILABLE_LOCKERS = " There are no available lockers at the moment.";
+    private static final Logger logger = Log.getLogger();
 
     /**
      * Instantiates all the fields necessary for assigning a locker to a student.
@@ -43,6 +47,7 @@ public class AssignLockerCommand extends Command {
 
     @Override
     public void execute(LockerList lockerList, Ui ui, Storage storage) throws DukeException {
+        logger.log(Level.INFO, " Executing command for assigning locker to the student");
         int storeIndex = assignLockerToStudent(lockerList, ui);
         ui.printSuccessfulAllocation(lockerList.getLocker(storeIndex).toString());
         storage.saveData(lockerList);

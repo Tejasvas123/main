@@ -1,6 +1,7 @@
 package duke.parser;
 
 import duke.exceptions.DukeException;
+import duke.log.Log;
 import duke.logic.commands.AssignLockerCommand;
 import duke.models.locker.LockerDate;
 import duke.models.locker.Usage;
@@ -15,6 +16,8 @@ import duke.parser.utilities.ParserTokenizer;
 import duke.parser.utilities.Token;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 import static duke.parser.utilities.Syntax.TOKEN_EMAIL;
@@ -29,6 +32,7 @@ import static duke.parser.utilities.Syntax.TOKEN_STUDENT_NAME;
  * Parses user input and creates a new AssignLockerCommand object.
  */
 public class AssignLockerCommandParser {
+    private static final Logger logger = Log.getLogger();
 
     /**
      * Checks if all the entries entered by the user are valid as per
@@ -38,6 +42,7 @@ public class AssignLockerCommandParser {
      * @throws DukeException when the command is in invalid format
      */
     public AssignLockerCommand parse(String userInput) throws DukeException {
+        logger.log(Level.INFO, "Attempting to parse user input for AssignLockerCommand");
         MapTokensToArguments mapTokensToArguments = ParserTokenizer
                 .tokenize(userInput, TOKEN_STUDENT_NAME, TOKEN_STUDENTID, TOKEN_EMAIL,
                         TOKEN_STUDENT_COURSE, TOKEN_START_DATE, TOKEN_END_DATE, TOKEN_PREFERENCES);

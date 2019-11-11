@@ -2,6 +2,7 @@ package duke.logic.commands;
 
 
 import duke.exceptions.DukeException;
+import duke.log.Log;
 import duke.models.LockerList;
 
 import duke.models.locker.Address;
@@ -15,6 +16,8 @@ import duke.ui.Ui;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static java.util.Objects.requireNonNull;
 
@@ -39,6 +42,7 @@ public class EditLockerCommand extends Command {
             + " allocated to the student, if there are available lockers."
             + "\n     4. If there are no available lockers for the student, then his/hers subscription"
             + " is terminated.";
+    private static final Logger logger = Log.getLogger();
 
     /**
      * Instantiates the editLockerCommand object.
@@ -55,6 +59,7 @@ public class EditLockerCommand extends Command {
 
     @Override
     public void execute(LockerList lockerList, Ui ui, Storage storage) throws DukeException {
+        logger.log(Level.INFO, " Executing command for editing locker details");
         Locker editedLocker = editLockerDetails(lockerList, ui);
         ui.showSuccessfullyEdited(editedLocker.toString());
         storage.saveData(lockerList);

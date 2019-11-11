@@ -1,5 +1,6 @@
 package duke;
 
+import duke.log.Log;
 import duke.logic.commands.Command;
 import duke.exceptions.DukeException;
 import duke.models.LockerList;
@@ -9,6 +10,9 @@ import duke.storage.Storage;
 import duke.storage.StorageManager;
 import duke.ui.Ui;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Runs the application.
  */
@@ -17,6 +21,7 @@ public class Duke {
     private Storage storage;
     private LockerList lockers;
     private Parser parser;
+    private static Logger logger = Log.getLogger();
 
     private static final String FILE_NAME_FOR_STORAGE = "data.json";
 
@@ -63,6 +68,7 @@ public class Duke {
      * @param args contains the supplied command-line arguments as an array of String objects.
      */
     public static void main(String[] args) throws DukeException {
+        logger.log(Level.INFO, " Starting SpongeBob");
         new Duke(FILE_NAME_FOR_STORAGE).run();
     }
 }

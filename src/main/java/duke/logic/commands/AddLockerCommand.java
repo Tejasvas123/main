@@ -1,10 +1,14 @@
 package duke.logic.commands;
 
 import duke.exceptions.DukeException;
+import duke.log.Log;
 import duke.models.locker.Locker;
 import duke.models.LockerList;
 import duke.storage.Storage;
 import duke.ui.Ui;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static java.util.Objects.requireNonNull;
 
@@ -18,6 +22,7 @@ public class AddLockerCommand extends Command {
     public static final String INVALID_FORMAT = " Invalid command format for adding a locker."
             + "\n     1. All tokens should be present (s/ z/ a/) "
             + "\n     2. There should not include any text between the command word and the first token.";
+    private static final Logger logger = Log.getLogger();
 
     /**
      * Creates an AddLockerCommand to add {@code Locker}.
@@ -29,6 +34,7 @@ public class AddLockerCommand extends Command {
 
     @Override
     public void execute(LockerList lockerList, Ui ui, Storage storage) throws DukeException {
+        logger.log(Level.INFO, " Executing command for adding a locker");
         if (lockerList.isPresentLocker(addLocker)) {
             throw new DukeException(LockerList.DUPLICATE_LOCKERS_FOUND);
         }
