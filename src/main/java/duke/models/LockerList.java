@@ -156,6 +156,7 @@ public class LockerList {
     public void removeAllLockers() {
         lockerList.clear();
     }
+
     public Locker getLocker(int index) {
         return lockerList.get(index);
     }

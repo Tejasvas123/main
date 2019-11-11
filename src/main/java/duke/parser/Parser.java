@@ -1,7 +1,19 @@
 package duke.parser;
 
 import duke.exceptions.DukeException;
-import duke.logic.commands.*;
+import duke.logic.commands.AddBatchCommand;
+import duke.logic.commands.AddLockerCommand;
+import duke.logic.commands.AssignLockerCommand;
+import duke.logic.commands.ByeCommand;
+import duke.logic.commands.ClearCommand;
+import duke.logic.commands.Command;
+import duke.logic.commands.DeleteLockerCommand;
+import duke.logic.commands.DeleteUsageCommand;
+import duke.logic.commands.EditLockerCommand;
+import duke.logic.commands.EditUsageCommand;
+import duke.logic.commands.ExportLockerCommand;
+import duke.logic.commands.HelpCommand;
+import duke.logic.commands.ListCommand;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
